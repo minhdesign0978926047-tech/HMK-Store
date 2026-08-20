@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HKM STORE - Điện thoại & Phụ kiện</title>
+    <!-- Nhúng Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Nhúng font Plus Jakarta Sans từ Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: #0b0b0e;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* --- 1. HEADER ĐÃ SỬA LỖI --- */
+        header {
+            background-color: #ffffff;
+            color: #000;
+            padding: 12px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 22px;
+            color: #000000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-box {
+            width: 42px;
+            height: 42px;
+            background-color: #0066ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+        }
+
+        nav {
+            display: flex;
+            gap: 5px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background-color: transparent;
+            transition: all 0.2s ease;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 102, 255, 0.12);
+            color: #0066ff;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-box {
+            background: #f4f5f7;
+            padding: 10px 18px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #555;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+            width: 150px;
+        }
+
+        .user-account-container a {
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            color: #000;
+            text-decoration: none;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: #0066ff;
+            color: #fff;
+            font-size: 11px;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+            font-weight: bold;
+        }
+
+        .cart-badge.bump {
+            transform: scale(1.4);
+        }
+
+        /* --- 2. HERO BANNER --- */
+        .hero {
+            background: radial-gradient(circle at 70% 50%, #1a0800 0%, #050508 60%, #000000 100%);
+            min-height: 620px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 5%;
+        }
+
+        .space-sun {
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(255, 115, 0, 0.45) 0%, rgba(226, 92, 29, 0.15) 40%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 120px rgba(226, 92, 29, 0.35), inset 0 0 60px rgba(255, 165, 0, 0.4);
+            z-index: 1;
+            animation: sunPulse 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes sunPulse {
+            0% { transform: translateY(-50%) scale(0.95); opacity: 0.8; }
+            100% { transform: translateY(-50%) scale(1.05); opacity: 1; }
+        }
+
+        .space-stars {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(white 1px, transparent 0);
+            background-size: 50px 50px;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-phone-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: spaceshipFlyIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        @keyframes spaceshipFlyIn {
+            0% { transform: translateX(-80vw) scale(0.7); opacity: 0; }
+            100% { transform: translateX(0) scale(1); opacity: 1; }
+        }
+
+        .hero-phone-img {
+            max-width: 700px;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 16px;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+        }
+
+        .hero-text-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            animation: textFadeIn 1s ease 0.3s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+            padding: 20px 0;
+        }
+
+        @keyframes textFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-text-content .sub {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ff9f43;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .hero-text-content h1 {
+            font-size: 58px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 1px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 40%, #e25c1d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 15px;
+            color: #b2b2b8;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .btn-learn {
+            background: linear-gradient(135deg, #e25c1d 0%, #ff7637 100%);
+            border: none;
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+            box-shadow: 0 0 25px rgba(226, 92, 29, 0.5);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-learn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 35px rgba(226, 92, 29, 0.8);
+        }
+
+        /* --- 3. DANH MỤC ĐIỆN THOẠI & CAROUSEL SLIDER --- */
+        .featured-section {
+            background-color: #eaf0f8;
+            color: #000;
+            padding: 50px 5% 60px;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            color: #0066ff;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .brand-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .brand-item {
+            background: #ffffff;
+            padding: 12px 24px; 
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            color: #333;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 2px solid transparent;
+            transition: all 0.25s ease;
+            min-height: 48px;
+        }
+
+        .brand-item:hover {
+            border-color: #0066ff;
+            color: #0066ff;
+            transform: translateY(-2px);
+        }
+
+        .brand-item.active {
+            background: #0066ff;
+            color: #ffffff;
+            border-color: #0066ff;
+            box-shadow: 0 6px 18px rgba(0, 102, 255, 0.3);
+        }
+
+        .slider-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .slider-viewport {
+            overflow: hidden;
+            width: 100%;
+            padding: 10px 0 25px;
+        }
+
+        .product-grid {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .product-card {
+            flex: 0 0 calc((100% - 60px) / 3);
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px 20px 25px; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .product-card > img {
+            width: 100%;
+            height: 250px; 
+            object-fit: contain;
+            margin-bottom: 15px;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover > img {
+            transform: scale(1.1); 
+        }
+
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .product-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #111;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .product-price {
+            color: #ea3a3d;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .rating-row {
+            font-size: 12px;
+            color: #ffb800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .rating-row span {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .qty-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f4f6fa;
+            border-radius: 10px;
+            padding: 6px 12px;
+            margin-bottom: 15px;
+        }
+
+        .qty-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-qty {
+            width: 26px;
+            height: 26px;
+            border: none;
+            background: #fff;
+            color: #111;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .btn-qty:hover {
+            background: #0066ff;
+            color: #fff;
+        }
+
+        .qty-number {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111;
+            min-width: 16px;
+            text-align: center;
+        }
+
+        .btn-add-cart {
+            background: #1c1c1e;
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 13px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        .btn-add-cart:active { transform: scale(0.98); }
+        .btn-add-cart:hover { background: #0066ff; }
+        .btn-add-cart.added { background: #22c55e; }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: #0066ff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            z-index: 10;
+            transition: all 0.25s ease;
+        }
+
+        .slider-btn:hover {
+            background: #0066ff;
+            color: #ffffff;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-btn.prev { left: -22px; }
+        .slider-btn.next { right: -22px; }
+        .slider-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: translateY(-50%);
+            background: #ffffff;
+            color: #999;
+        }
+
+        /* --- 4. PROMO BANNER MỚI & HIỆU ỨNG SCROLL --- */
+        .promo-banner {
+            background: #000000;
+            background-image: radial-gradient(circle at top left, rgba(0, 102, 255, 0.45) 0%, transparent 55%);
+            padding: 60px 8% 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 480px;
+        }
+
+        .promo-text, .promo-graphics {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .promo-banner.in-view .promo-text, 
+        .promo-banner.in-view .promo-graphics {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .promo-banner.in-view .promo-graphics {
+            transition-delay: 0.2s;
+        }
+
+        .promo-text {
+            max-width: 45%;
+            z-index: 2;
+            padding-bottom: 60px;
+        }
+
+        .promo-text h2 {
+            font-size: 52px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .promo-text h2 span {
+            color: #3b82f6; 
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .promo-text p {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .btn-buy-now {
+            background: #000000;
+            color: #ffffff;
+            border: 2px solid #0052ff;
+            padding: 12px 36px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 0 18px rgba(0, 82, 255, 0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-buy-now:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 82, 255, 0.9);
+        }
+
+        .promo-graphics {
+            position: relative;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            align-self: flex-end;
+        }
+
+        .pro-title-wrapper {
+            text-align: center;
+            margin-bottom: -50px;
+            z-index: 2;
+        }
+
+        .apple-pro-tag {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fca873;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: -15px;
+        }
+
+        .pro-big-text {
+            font-size: 130px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            line-height: 1;
+            background: linear-gradient(180deg, #f5bc91 0%, #c46328 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .phone-mockup-img {
+            width: 100%;
+            max-width: 520px;
+            display: block;
+            z-index: 1;
+            margin-bottom: -5px; 
+        }
+
+        /* --- 5. COMBOS SECTION --- */
+        .combo-section {
+            background-color: #080a10;
+            padding: 60px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .combo-box {
+            background: #111420;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 1000px;
+            width: 100%;
+            border: 1px solid #1e2338;
+            text-align: center;
+        }
+
+        .combo-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .combo-sub {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        .combo-items {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .combo-item {
+            background: #181c2b;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 250px;
+            text-align: left;
+        }
+
+        .combo-item img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .item-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .item-price {
+            color: #ff3b30;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .plus-icon {
+    background: #0066ff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; /* Tăng size lên 16px cho cân đối hơn */
+    color: #ffffff;
+    line-height: 0; /* Khử khoảng trắng thừa của font chữ */
+    padding-bottom: 2px; /* Đẩy nhẹ dấu cộng lên chính giữa */
+}
+
+        .combo-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #181c2b;
+            padding: 20px 30px;
+            border-radius: 12px;
+        }
+
+        .price-group { text-align: left; }
+        .original-price {
+            text-decoration: line-through;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .discount-price {
+            font-size: 26px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .btn-combo-cart {
+            background: #0066ff;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-combo-cart:hover {
+            background-color: #34C759;
+            transform: translateY(-2px);
+        }
+
+        /* --- 6. FOOTER ĐỒNG BỘ --- */
+        footer {
+            background-color: #0066ff;
+            color: #ffffff;
+            padding: 50px 8% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 20px;
+            color: #ffffff;
+            text-decoration: none;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo .logo-box {
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-desc, .newsletter-desc {
+            font-size: 13px;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13.5px;
+            opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 5px;
+        }
+
+        .subscribe-form input {
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            width: 65%;
+            font-size: 13px;
+        }
+
+        .subscribe-form button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            background: #ffffff;
+            color: #0066ff;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-text-content { align-items: center; text-align: center; }
+            .product-card { flex: 0 0 calc(100% - 20px); }
+            .slider-btn.prev { left: 5px; }
+            .slider-btn.next { right: 5px; }
+            .promo-banner { flex-direction: column; text-align: center; padding-top: 40px; }
+            .promo-text { max-width: 100%; align-items: center; padding-bottom: 20px; }
+            .promo-graphics { width: 100%; align-self: center; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HEADER (LOGO LINK INDEX, NÚT ĐIỆN THOẠI LINK DIENTHOAI.HTML, KHÔNG LỖI HOVER) -->
+    <header>
+        <div class="header-left">
+            <a href="index.html" class="logo">
+                <div class="logo-box">
+                    <svg width="18" height="20" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0L23.2583 6.5V19.5L12 26L0.741669 19.5V6.5L12 0Z" fill="white"/>
+                    </svg>
+                </div>
+                <span>HKM Store</span>
+            </a>
+            <nav>
+                <a href="dienthoai.html">Điện thoại</a>
+                <a href="phukien.html">Phụ kiện</a>
+                <a href="tainghe.html">Tai nghe</a>
+                <a href="sac.html">Sạc</a>
+                <a href="op.html">Ốp</a>
+            </nav>
+        </div>
+        
+        <div class="header-actions">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass" style="color: #888;"></i>
+                <input type="text" placeholder="Tìm kiếm sản phẩm...">
+            </div>
+            <div class="user-account-container" id="userAccountContainer">
+                <a href="auth.html" style="color:#000; text-decoration:none;">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+            </div>
+            <a href="cart.html" class="cart-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. HERO BANNER -->
+    <section class="hero">
+        <div class="space-stars"></div>
+        <div class="space-sun"></div>
+        
+        <div class="hero-container">
+            <div class="hero-phone-wrapper">
+                <img src="Apple.jpg" class="hero-phone-img" alt="iPhone 17 Pro Max">
+            </div>
+            <div class="hero-text-content">
+                <p class="sub">IPHONE 17 PRO MAX</p>
+                <h1>ĐỘT PHÁ<br>GIỚI HẠN</h1>
+                <p class="hero-desc">Khám phá giới hạn công nghệ mới với thiết kế khung viền đẳng cấp, hiệu năng đỉnh cao vươn tầm vũ trụ.</p>
+                <button class="btn-learn" onclick="window.location.href='chitietdt.html'">Khám phá ngay</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. DANH MỤC ĐIỆN THOẠI & CAROUSEL SLIDER -->
+    <section class="featured-section">
+        <h2 class="section-title">Danh Mục Điện Thoại</h2>
+        
+        <div class="brand-bar">
+            <div class="brand-item active" onclick="filterBrand('all', this)">
+                <i class="fa-solid fa-border-all"></i> Tất cả
+            </div>
+            <div class="brand-item" onclick="filterBrand('apple', this)">Apple</div>
+            <div class="brand-item" onclick="filterBrand('samsung', this)">Samsung</div>
+            <div class="brand-item" onclick="filterBrand('xiaomi', this)">Xiaomi</div>
+            <div class="brand-item" onclick="filterBrand('oppo', this)">OPPO</div>
+        </div>
+
+        <div class="slider-wrapper">
+            <button class="slider-btn prev" id="slidePrevBtn" onclick="slideCards(-1)">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            
+            <div class="slider-viewport">
+                <div class="product-grid" id="productGrid">
+                    <!-- Render thẻ sản phẩm bằng JS -->
+                </div>
+            </div>
+
+            <button class="slider-btn next" id="slideNextBtn" onclick="slideCards(1)">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- 4. BANNER KHUYẾN MÃI MỚI (TỪ INDEX_5) -->
+    <section class="promo-banner" id="promoBanner">
+        <div class="promo-text" id="promoText">
+            <h2>iPhone 17 <span>Series</span></h2>
+            <p>Đỉnh Cao Mới<br>Của Dòng Pro</p>
+            <button class="btn-buy-now" onclick="window.location.href='dienthoai.html'">Mua ngay</button>
+        </div>
+        
+        <div class="promo-graphics" id="promoGraphics">
+            <div class="pro-title-wrapper">
+                <div>
+                    <i></i>
+                </div>
+                <div class="pro-big-text"></div>
+            </div>
+            <img src="17b.jpg" class="phone-mockup-img" alt="iPhone 17 Pro Orange">
+        </div>
+    </section>
+
+    <!-- 5. PHẦN COMBO ƯU ĐÃI KÉO DÀI -->
+    <section class="combo-section">
+        <!-- COMBO 1: 3 SẢN PHẨM -->
+        <div class="combo-box">
+            <h3 class="combo-title">COMBO 3 SẢN PHẨM</h3>
+            <p class="combo-sub">Điện thoại, tai nghe và bộ sạc - được kết hợp hoàn hảo. Mua combo để tiết kiệm lên tới 10%.</p>
+            
+            <div class="combo-items">
+                <div class="combo-item">
+                    <img src="17cam.webp" alt="Phone">
+                    <div>
+                        <div class="item-title">iPhone 17 Pro Max</div>
+                        <div class="item-price">34.990.000đ</div>
+                    </div>
+                </div>
+                <div class="plus-icon"><i class="fa-solid fa-plus" style="font-size: 12px;"></i></div>
+                <div class="combo-item">
+                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=512&hei=512&fmt=jpeg" alt="AirPods">
+                    <div>
+                        <div class="item-title">AirPods 4</div>
+                        <div class="item-price">3.490.000đ</div>
+                    </div>
+                </div>
+                <div class="plus-icon"><i class="fa-solid fa-plus" style="font-size: 12px;"></i></div>
+                <div class="combo-item">
+                    <img src="asac.webp" alt="Charger">
+                    <div>
+                        <div class="item-title">Type C 18W</div>
+                        <div class="item-price">990.000đ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="combo-footer">
+                <div class="price-group">
+                    <div class="original-price">Giá gốc: 39.470.000đ</div>
+                    <div class="discount-price">35.523.000đ <span style="font-size:12px; color:#34c759;">(Giảm 10%)</span></div>
+                </div>
+                <button class="btn-combo-cart" onclick="addToCart('Combo 3 Sản Phẩm', 35523000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=512&hei=512&fmt=png-alpha')">
+                    <i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+
+        <!-- COMBO 2: 2 ĐIỆN THOẠI -->
+        <div class="combo-box">
+            <h3 class="combo-title">COMBO 2 ĐIỆN THOẠI</h3>
+            <p class="combo-sub">Điện thoại - Mua combo để tiết kiệm lên tới 5%.</p>
+            
+            <div class="combo-items">
+                <div class="combo-item">
+                    <img src="17cam.webp" alt="Phone 1">
+                    <div>
+                        <div class="item-title">iPhone 17 Pro Max</div>
+                        <div class="item-price">34.990.000đ</div>
+                    </div>
+                </div>
+                <div class="plus-icon"><i class="fa-solid fa-plus" style="font-size: 12px;"></i></div>
+                <div class="combo-item">
+                    <img src="17.webp" alt="Phone 2">
+                    <div>
+                        <div class="item-title">iPhone 17</div>
+                        <div class="item-price">22.990.000đ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="combo-footer">
+                <div class="price-group">
+                    <div class="original-price">Giá gốc: 57.980.000đ</div>
+                    <div class="discount-price">55.081.000đ <span style="font-size:12px; color:#34c759;">(Giảm 5%)</span></div>
+                </div>
+                <button class="btn-combo-cart" onclick="addToCart('Combo 2 Điện Thoại', 55081000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=512&hei=512&fmt=png-alpha')">
+                    <i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+
+        <!-- COMBO 3: 3 PHỤ KIỆN -->
+        <div class="combo-box">
+            <h3 class="combo-title">COMBO 3 PHỤ KIỆN</h3>
+            <p class="combo-sub">Ốp, tai nghe và bộ sạc - được kết hợp hoàn hảo. Mua combo để tiết kiệm lên tới 15%.</p>
+            
+            <div class="combo-items">
+                <div class="combo-item">
+                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT213?wid=532&hei=582&fmt=png-alpha" alt="Case">
+                    <div>
+                        <div class="item-title">Silicone With Magsafe</div>
+                        <div class="item-price">1.150.000đ</div>
+                    </div>
+                </div>
+                <div class="plus-icon"><i class="fa-solid fa-plus" style="font-size: 12px;"></i></div>
+                <div class="combo-item">
+                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=512&hei=512&fmt=jpeg" alt="AirPods">
+                    <div>
+                        <div class="item-title">AirPods 4</div>
+                        <div class="item-price">3.490.000đ</div>
+                    </div>
+                </div>
+                <div class="plus-icon"><i class="fa-solid fa-plus" style="font-size: 12px;"></i></div>
+                <div class="combo-item">
+                    <img src="asac.webp" alt="Charger">
+                    <div>
+                        <div class="item-title">Type C 18W</div>
+                        <div class="item-price">990.000đ</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="combo-footer">
+                <div class="price-group">
+                    <div class="original-price">Giá gốc: 5.630.000đ</div>
+                    <div class="discount-price">4.785.500đ <span style="font-size:12px; color:#34c759;">(Giảm 15%)</span></div>
+                </div>
+                <button class="btn-combo-cart" onclick="addToCart('Combo 3 Phụ Kiện', 4785500, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT213?wid=532&hei=582&fmt=png-alpha')">
+                    <i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 6. FOOTER ĐỒNG BỘ -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo">
+                    <div class="logo-box">
+                        <svg width="18" height="20" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0L23.2583 6.5V19.5L12 26L0.741669 19.5V6.5L12 0Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <span>HKM STORE</span>
+                </a>
+                <p class="footer-desc">Hệ thống bán lẻ điện thoại di động chính hãng hàng đầu. Cung cấp trải nghiệm mua sắm công nghệ đỉnh cao và dịch vụ hậu mãi chuyên nghiệp.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>SẢN PHẨM</h4>
+                <ul>
+                    <li><a href="dienthoai.html">Điện thoại</a></li>
+                    <li><a href="tainghe.html">Tai nghe</a></li>
+                    <li><a href="sac.html">Sạc</a></li>
+                    <li><a href="op.html">Ốp</a></li>
+                    <li><a href="phukien.html">Tất cả phụ kiện</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>HỖ TRỢ</h4>
+                <ul>
+                    <li><a href="lien-he.html">Liên hệ & Hỗ trợ</a></li>
+                    <li><a href="payment-policy.html">Chính sách thanh toán</a></li>
+                    <li><a href="warranty.html">Chính sách bảo hành</a></li>
+                    <li><a href="warranty-claim.html">Yêu cầu bảo hành</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col newsletter">
+                <h4>AN TOÀN & BẢO MẬT</h4>
+                <p class="newsletter-desc">Mọi giao dịch thanh toán đều được mã hóa & bảo mật theo tiêu chuẩn quốc tế.</p>
+                <div class="subscribe-form">
+                    <input type="email" placeholder="your@email.com">
+                    <button type="button">Join</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 HKM Store Inc. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Cookie Settings</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT CHÍNH VÀ JS LOGIC -->
+    <script>
+        const products = [
+            { id: 1, brand: 'apple', name: 'iPhone 17 Pro Max', priceNum: 34990000, priceStr: '34.990.000đ', rating: 5.0, image: '17cam.webp' },
+            { id: 2, brand: 'apple', name: 'iPhone 17 Pro', priceNum: 29990000, priceStr: '29.990.000đ', rating: 4.9, image: '17cam.webp' },
+            { id: 3, brand: 'apple', name: 'iPhone 17 Air', priceNum: 26990000, priceStr: '26.990.000đ', rating: 4.8, image: '17a.webp' },
+            { id: 4, brand: 'apple', name: 'iPhone 17', priceNum: 22990000, priceStr: '22.990.000đ', rating: 4.8, image: '17.webp' },
+            { id: 5, brand: 'apple', name: 'iPhone 16 Pro Max', priceNum: 31490000, priceStr: '31.490.000đ', rating: 4.9, image: '16pm.webp' },
+            { id: 6, brand: 'samsung', name: 'Samsung Galaxy S26 Ultra', priceNum: 32990000, priceStr: '32.990.000đ', rating: 4.9, image: 's26.webp' },
+            { id: 7, brand: 'samsung', name: 'Samsung Galaxy S26 Plus', priceNum: 25990000, priceStr: '25.990.000đ', rating: 4.8, image: 's26p.webp' },
+            { id: 8, brand: 'samsung', name: 'Samsung Galaxy Z Fold7', priceNum: 41990000, priceStr: '41.990.000đ', rating: 4.9, image: 'f7.webp' },
+            { id: 9, brand: 'samsung', name: 'Samsung Galaxy Z Flip7', priceNum: 26990000, priceStr: '26.990.000đ', rating: 4.8, image: 'lip7.webp' },
+            { id: 10, brand: 'samsung', name: 'Samsung Galaxy S25 FE', priceNum: 16990000, priceStr: '16.990.000đ', rating: 4.7, image: '25fe.webp' },
+            { id: 11, brand: 'xiaomi', name: 'Xiaomi 15 Ultra', priceNum: 29990000, priceStr: '29.990.000đ', rating: 4.9, image: '15u.webp' },
+            { id: 12, brand: 'xiaomi', name: 'Xiaomi 15 Pro', priceNum: 23990000, priceStr: '23.990.000đ', rating: 4.8, image: '15tp.webp' },
+            { id: 13, brand: 'xiaomi', name: 'Xiaomi 15', priceNum: 18990000, priceStr: '18.990.000đ', rating: 4.8, image: '15.webp' },
+            { id: 14, brand: 'xiaomi', name: 'Redmi 15C', priceNum: 4990000, priceStr: '4.990.000đ', rating: 4.9, image: '15c.webp' },
+            { id: 15, brand: 'xiaomi', name: 'Redmi K80 Pro', priceNum: 13990000, priceStr: '13.990.000đ', rating: 4.7, image: 'k80.webp' },
+            { id: 16, brand: 'oppo', name: 'OPPO Find X8 Ultra', priceNum: 31990000, priceStr: '31.990.000đ', rating: 4.9, image: 'x8u.png' },
+            { id: 17, brand: 'oppo', name: 'OPPO Find X8 Pro', priceNum: 26990000, priceStr: '26.990.000đ', rating: 4.8, image: 'x8p.webp' },
+            { id: 18, brand: 'oppo', name: 'OPPO Find X8', priceNum: 20990000, priceStr: '20.990.000đ', rating: 4.8, image: 'x8.webp' },
+            { id: 19, brand: 'oppo', name: 'OPPO Find N4 Flip', priceNum: 22990000, priceStr: '22.990.000đ', rating: 4.7, image: 'n4.webp' },
+            { id: 20, brand: 'oppo', name: 'OPPO Reno 13 Pro', priceNum: 14990000, priceStr: '14.990.000đ', rating: 4.7, image: 'r13.webp' }
+        ];
+
+        let currentIndex = 0;
+        let currentFiltered = [];
+
+        function renderProducts(brandFilter = 'all') {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+            currentIndex = 0;
+
+            currentFiltered = brandFilter === 'all' 
+                ? products 
+                : products.filter(p => p.brand === brandFilter);
+
+            currentFiltered.forEach((item) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" style="cursor: pointer;" onclick="window.location.href='chitietdt.html'">
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <span class="product-name" title="${item.name}" style="cursor: pointer;" onclick="window.location.href='chitietdt.html'">${item.name}</span>
+                            <span class="product-price">${item.priceStr}</span>
+                        </div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>${item.rating}</span>
+                        </div>
+                        <div class="qty-container">
+                            <span class="qty-label">Số lượng:</span>
+                            <div class="qty-control">
+                                <button class="btn-qty" onclick="changeQty(${item.id}, -1)">-</button>
+                                <span class="qty-number" id="qty-${item.id}">1</span>
+                                <button class="btn-qty" onclick="changeQty(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="btn-add-cart" onclick="addToCart(this, ${item.id})">Thêm vào giỏ hàng</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            updateSliderPosition();
+        }
+
+        function changeQty(productId, delta) {
+            const qtyElement = document.getElementById(`qty-${productId}`);
+            let val = parseInt(qtyElement.textContent) + delta;
+            if (val < 1) val = 1;
+            qtyElement.textContent = val;
+        }
+
+        function slideCards(direction) {
+            const maxIndex = Math.max(0, currentFiltered.length - 3);
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            updateSliderPosition();
+        }
+
+        function updateSliderPosition() {
+            const grid = document.getElementById('productGrid');
+            const maxIndex = Math.max(0, currentFiltered.length - 3);
+            const cardWidthPercent = 100 / 3;
+            grid.style.transform = `translateX(calc(-${currentIndex * cardWidthPercent}% - ${currentIndex * 10}px))`;
+
+            document.getElementById('slidePrevBtn').disabled = currentIndex === 0;
+            document.getElementById('slideNextBtn').disabled = currentIndex >= maxIndex;
+        }
+
+        function filterBrand(brand, element) {
+            document.querySelectorAll('.brand-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            renderProducts(brand);
+        }
+
+        function addToCart(buttonOrName, priceOrId, imageUrl) {
+            let cart = JSON.parse(localStorage.getItem('hkm_cart')) || [];
+            let item, qty;
+
+            if (typeof buttonOrName === 'string') {
+                item = { name: buttonOrName, priceNum: priceOrId, rating: 4.9, image: imageUrl };
+                qty = 1;
+            } else {
+                item = products.find(p => p.id === priceOrId);
+                qty = parseInt(document.getElementById(`qty-${priceOrId}`).textContent) || 1;
+            }
+
+            let existingItem = cart.find(p => p.name === item.name);
+            if (existingItem) {
+                existingItem.quantity += qty;
+            } else {
+                cart.push({
+                    id: Date.now(),
+                    name: item.name,
+                    price: item.priceNum,
+                    rating: item.rating,
+                    quantity: qty,
+                    image: item.image
+                });
+            }
+
+            localStorage.setItem('hkm_cart', JSON.stringify(cart));
+            updateHeaderBadge();
+
+            if (typeof buttonOrName !== 'string') {
+                const originalText = buttonOrName.innerHTML;
+                buttonOrName.classList.add('added');
+                buttonOrName.innerHTML = `Đã thêm (${qty}) ✓`;
+                setTimeout(() => {
+                    buttonOrName.classList.remove('added');
+                    buttonOrName.innerHTML = originalText;
+                }, 1500);
+            } else {
+                alert(`Đã thêm combo "${buttonOrName}" vào giỏ hàng thành công!`);
+            }
+        }
+
+        function updateHeaderBadge() {
+            let cart = JSON.parse(localStorage.getItem('hkm_cart')) || [];
+            let totalQty = cart.reduce((sum, item) => sum + (Number(item.quantity) || 1), 0);
+            
+            const badge = document.getElementById('cartBadge');
+            if (badge) {
+                badge.textContent = totalQty;
+                badge.classList.add('bump');
+                setTimeout(() => badge.classList.remove('bump'), 200);
+            }
+        }
+
+        function checkLoginStatus() {
+            const currentUser = JSON.parse(localStorage.getItem('hkm_currentUser'));
+            const container = document.getElementById('userAccountContainer');
+
+            if (currentUser && container) {
+                container.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <a href="profile.html" style="font-weight: 600; color: #0066ff; text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-regular fa-user" style="font-size: 16px;"></i> 
+                            <span>Chào, ${currentUser.name}</span>
+                        </a>
+                        <button onclick="handleLogout()" style="border:none; background:transparent; color:#ff3b30; cursor:pointer; font-size:12px; font-weight:600; padding:0;">[Thoát]</button>
+                    </div>
+                `;
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('hkm_currentUser');
+            alert('Đã đăng xuất!');
+            window.location.reload();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts('all');
+            updateHeaderBadge();
+            checkLoginStatus();
+
+            // Hiệu ứng Scroll cho Banner 2
+            const promoBanner = document.getElementById('promoBanner');
+            if (promoBanner) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            promoBanner.classList.add('in-view');
+                        }
+                    });
+                }, { threshold: 0.3 }); 
+                observer.observe(promoBanner);
+            }
+        });
+    </script>
+</body>
+</html>
