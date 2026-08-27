@@ -21,7 +21,6 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            /* Đồng bộ font chữ toàn trang thành Plus Jakarta Sans */
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
@@ -193,9 +192,17 @@
             margin-bottom: 16px;
         }
 
+        .avatar-container {
+            position: relative;
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 12px;
+            cursor: pointer;
+        }
+
         .avatar-circle {
-            width: 64px;
-            height: 64px;
+            width: 100%;
+            height: 100%;
             background: var(--primary-blue);
             color: #fff;
             border-radius: 50%;
@@ -204,7 +211,33 @@
             justify-content: center;
             font-size: 24px;
             font-weight: 700;
-            margin: 0 auto 12px;
+            overflow: hidden;
+            border: 2px solid #e2e8f0;
+        }
+
+        .avatar-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-container::after {
+            content: "\f030";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #111;
+            color: #fff;
+            font-size: 10px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #fff;
         }
 
         .user-info-head h3 {
@@ -396,6 +429,26 @@
             color: #888;
         }
 
+        /* --- STYLES CHO POPUP THÔNG BÁO GIỮA MÀN HÌNH --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none; justify-content: center; align-items: center;
+            z-index: 3000; backdrop-filter: blur(4px);
+        }
+        .modal-box {
+            background: #ffffff; width: 100%; max-width: 350px;
+            border-radius: 20px; padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            text-align: center;
+            animation: modalFadeIn 0.3s ease;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* --- 3. FOOTER (ĐỒNG BỘ CHUẨN) --- */
         footer {
             background-color: #0066ff;
@@ -568,12 +621,12 @@
               <span>HKM Store</span>
             </a>
             <nav>
-    <a href="dienthoai.html">Điện thoại</a>
-    <a href="phukien.html">Phụ kiện</a>
-    <a href="tainghe.html">Tai nghe</a>
-    <a href="sac.html">Sạc</a>
-    <a href="op.html">Ốp</a>
-</nav>
+                <a href="dienthoai.html">Điện thoại</a>
+                <a href="phukien.html">Phụ kiện</a>
+                <a href="tainghe.html">Tai nghe</a>
+                <a href="sac.html">Sạc</a>
+                <a href="op.html">Ốp</a>
+            </nav>
         </div>
         
         <div class="header-actions">
@@ -600,7 +653,13 @@
             <!-- Sidebar Navigation -->
             <div class="profile-sidebar">
                 <div class="user-info-head">
-                    <div class="avatar-circle" id="avatarChar">U</div>
+                    <div class="avatar-container" onclick="document.getElementById('avatarFileInput').click()" title="Nhấn để đổi ảnh đại diện">
+                        <div class="avatar-circle" id="avatarBox">
+                            <span id="avatarChar">U</span>
+                        </div>
+                    </div>
+                    <input type="file" id="avatarFileInput" accept="image/*" style="display: none;" onchange="handleAvatarUpload(event)">
+                    
                     <h3 id="sideName">Người dùng</h3>
                     <p id="sideEmail">email@example.com</p>
                 </div>
@@ -631,9 +690,9 @@
                                 <input type="text" id="profName" required>
                             </div>
                             <div class="form-group">
-    <label>Số điện thoại</label>
-    <input type="tel" id="profPhone" placeholder="Ví dụ: 0912345678" pattern="0[0-9]{9}" title="Số điện thoại phải bắt đầu bằng số 0 và có đúng 10 chữ số.">
-</div>
+                                <label>Số điện thoại</label>
+                                <input type="tel" id="profPhone" placeholder="Ví dụ: 0912345678" pattern="0[0-9]{9}" title="Số điện thoại phải bắt đầu bằng số 0 và có đúng 10 chữ số.">
+                            </div>
                             <div class="form-group full">
                                 <label>Email (Không thể thay đổi)</label>
                                 <input type="email" id="profEmail" disabled style="background:#f0f0f0;">
@@ -674,6 +733,15 @@
 
             </div>
 
+        </div>
+    </div>
+
+    <!-- POPUP THÔNG BÁO ĐỔI ẢNH ĐẠI DIỆN THÀNH CÔNG -->
+    <div class="modal-overlay" id="avatarSuccessModal">
+        <div class="modal-box">
+            <i class="fa-solid fa-circle-check" style="font-size: 50px; color: #22c55e; margin-bottom: 15px;"></i>
+            <h3 style="margin-bottom: 10px; font-size: 20px; font-weight: 800; color: #111;">Thành công!</h3>
+            <p style="font-size: 14px; color: #666;">Đã thay đổi ảnh đại diện cá nhân.</p>
         </div>
     </div>
 
@@ -754,7 +822,8 @@
 
             document.getElementById('sideName').textContent = currentUser.name;
             document.getElementById('sideEmail').textContent = currentUser.email;
-            document.getElementById('avatarChar').textContent = currentUser.name.charAt(0).toUpperCase();
+            
+            updateAvatarDisplay(currentUser);
 
             document.getElementById('profName').value = currentUser.name || '';
             document.getElementById('profEmail').value = currentUser.email || '';
@@ -765,6 +834,46 @@
             updateBadge();
             checkLoginStatusHeader();
         });
+
+        // Hàm xử lý khi người dùng chọn ảnh tải lên từ máy tính
+        function handleAvatarUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Image = e.target.result;
+                    
+                    currentUser.avatar = base64Image;
+                    localStorage.setItem('hkm_currentUser', JSON.stringify(currentUser));
+
+                    let users = JSON.parse(localStorage.getItem('hkm_users')) || [];
+                    let idx = users.findIndex(u => u.email === currentUser.email);
+                    if (idx !== -1) {
+                        users[idx] = currentUser;
+                        localStorage.setItem('hkm_users', JSON.stringify(users));
+                    }
+
+                    updateAvatarDisplay(currentUser);
+
+                    // HIỆN POPUP THÔNG BÁO GIỮA MÀN HÌNH SAU KHI ĐỔI ẢNH THÀNH CÔNG
+                    const modal = document.getElementById('avatarSuccessModal');
+                    modal.style.display = 'flex';
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 1500);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function updateAvatarDisplay(user) {
+            const avatarBox = document.getElementById('avatarBox');
+            if (user.avatar) {
+                avatarBox.innerHTML = `<img src="${user.avatar}" alt="Avatar">`;
+            } else {
+                avatarBox.innerHTML = `<span id="avatarChar">${user.name ? user.name.charAt(0).toUpperCase() : 'U'}</span>`;
+            }
+        }
 
         function switchProfileTab(tabName, element) {
             document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
@@ -820,7 +929,7 @@
             }
 
             document.getElementById('sideName').textContent = currentUser.name;
-            document.getElementById('avatarChar').textContent = currentUser.name.charAt(0).toUpperCase();
+            updateAvatarDisplay(currentUser);
 
             document.getElementById('currentPassword').value = '';
             document.getElementById('newPassword').value = '';
