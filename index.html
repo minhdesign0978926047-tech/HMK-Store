@@ -536,7 +536,7 @@
             color: #999;
         }
 
-        /* --- 4. PROMO BANNER MỚI & HIỆU ỨNG SCROLL --- */
+        /* --- 4. PROMO BANNER --- */
         .promo-banner {
             background: #000000;
             background-image: radial-gradient(circle at top left, rgba(0, 102, 255, 0.45) 0%, transparent 55%);
@@ -656,7 +656,7 @@
             margin-bottom: -5px; 
         }
 
-        /* --- 5. COMBOS SECTION --- */
+        /* --- 5. COMBOS SECTION VỚI HIỆU ỨNG --- */
         .combo-section {
             background-color: #080a10;
             padding: 60px 5%;
@@ -666,6 +666,7 @@
             gap: 40px;
         }
 
+        /* Class để tạo hiệu ứng xuất hiện cho Combo */
         .combo-box {
             background: #111420;
             border-radius: 16px;
@@ -674,6 +675,14 @@
             width: 100%;
             border: 1px solid #1e2338;
             text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .combo-box.in-view {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .combo-title {
@@ -728,18 +737,18 @@
         }
 
         .plus-icon {
-    background: #0066ff;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px; /* Tăng size lên 16px cho cân đối hơn */
-    color: #ffffff;
-    line-height: 0; /* Khử khoảng trắng thừa của font chữ */
-    padding-bottom: 2px; /* Đẩy nhẹ dấu cộng lên chính giữa */
-}
+            background: #0066ff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #ffffff;
+            line-height: 0;
+            padding-bottom: 2px;
+        }
 
         .combo-footer {
             display: flex;
@@ -932,7 +941,7 @@
 </head>
 <body>
 
-    <!-- 1. HEADER (LOGO LINK INDEX, NÚT ĐIỆN THOẠI LINK DIENTHOAI.HTML, KHÔNG LỖI HOVER) -->
+    <!-- HEADER -->
     <header>
         <div class="header-left">
             <a href="index.html" class="logo">
@@ -969,7 +978,7 @@
         </div>
     </header>
 
-    <!-- 2. HERO BANNER -->
+    <!-- HERO BANNER -->
     <section class="hero">
         <div class="space-stars"></div>
         <div class="space-sun"></div>
@@ -987,7 +996,7 @@
         </div>
     </section>
 
-    <!-- 3. DANH MỤC ĐIỆN THOẠI & CAROUSEL SLIDER -->
+    <!-- DANH MỤC ĐIỆN THOẠI & CAROUSEL SLIDER -->
     <section class="featured-section">
         <h2 class="section-title">Danh Mục Điện Thoại</h2>
         
@@ -1018,7 +1027,7 @@
         </div>
     </section>
 
-    <!-- 4. BANNER KHUYẾN MÃI MỚI (TỪ INDEX_5) -->
+    <!-- BANNER KHUYẾN MÃI -->
     <section class="promo-banner" id="promoBanner">
         <div class="promo-text" id="promoText">
             <h2>iPhone 17 <span>Series</span></h2>
@@ -1037,9 +1046,9 @@
         </div>
     </section>
 
-    <!-- 5. PHẦN COMBO ƯU ĐÃI KÉO DÀI -->
+    <!-- COMBOS SECTION (VỚI HIỆU ỨNG XUẤT HIỆN) -->
     <section class="combo-section">
-        <!-- COMBO 1: 3 SẢN PHẨM -->
+        <!-- COMBO 1 -->
         <div class="combo-box">
             <h3 class="combo-title">COMBO 3 SẢN PHẨM</h3>
             <p class="combo-sub">Điện thoại, tai nghe và bộ sạc - được kết hợp hoàn hảo. Mua combo để tiết kiệm lên tới 10%.</p>
@@ -1052,7 +1061,7 @@
                         <div class="item-price">34.990.000đ</div>
                     </div>
                 </div>
-                <div class="plus-icon"><i class="fa-solid fa-plus" style="font-size: 12px;"></i></div>
+                <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
                 <div class="combo-item">
                     <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=512&hei=512&fmt=jpeg" alt="AirPods">
                     <div>
@@ -1060,7 +1069,7 @@
                         <div class="item-price">3.490.000đ</div>
                     </div>
                 </div>
-                <div class="plus-icon"><i class="fa-solid fa-plus" style="font-size: 12px;"></i></div>
+                <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
                 <div class="combo-item">
                     <img src="asac.webp" alt="Charger">
                     <div>
@@ -1081,7 +1090,7 @@
             </div>
         </div>
 
-        <!-- COMBO 2: 2 ĐIỆN THOẠI -->
+        <!-- COMBO 2 -->
         <div class="combo-box">
             <h3 class="combo-title">COMBO 2 ĐIỆN THOẠI</h3>
             <p class="combo-sub">Điện thoại - Mua combo để tiết kiệm lên tới 5%.</p>
@@ -1094,7 +1103,7 @@
                         <div class="item-price">34.990.000đ</div>
                     </div>
                 </div>
-                <div class="plus-icon"><i class="fa-solid fa-plus" style="font-size: 12px;"></i></div>
+                <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
                 <div class="combo-item">
                     <img src="17.webp" alt="Phone 2">
                     <div>
@@ -1115,7 +1124,7 @@
             </div>
         </div>
 
-        <!-- COMBO 3: 3 PHỤ KIỆN -->
+        <!-- COMBO 3 -->
         <div class="combo-box">
             <h3 class="combo-title">COMBO 3 PHỤ KIỆN</h3>
             <p class="combo-sub">Ốp, tai nghe và bộ sạc - được kết hợp hoàn hảo. Mua combo để tiết kiệm lên tới 15%.</p>
@@ -1128,7 +1137,7 @@
                         <div class="item-price">1.150.000đ</div>
                     </div>
                 </div>
-                <div class="plus-icon"><i class="fa-solid fa-plus" style="font-size: 12px;"></i></div>
+                <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
                 <div class="combo-item">
                     <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=512&hei=512&fmt=jpeg" alt="AirPods">
                     <div>
@@ -1136,7 +1145,7 @@
                         <div class="item-price">3.490.000đ</div>
                     </div>
                 </div>
-                <div class="plus-icon"><i class="fa-solid fa-plus" style="font-size: 12px;"></i></div>
+                <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
                 <div class="combo-item">
                     <img src="asac.webp" alt="Charger">
                     <div>
@@ -1159,7 +1168,7 @@
 
     </section>
 
-    <!-- 6. FOOTER ĐỒNG BỘ -->
+    <!-- FOOTER ĐỒNG BỘ -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -1401,7 +1410,7 @@
             updateHeaderBadge();
             checkLoginStatus();
 
-            // Hiệu ứng Scroll cho Banner 2
+            // Hiệu ứng Scroll cho Banner
             const promoBanner = document.getElementById('promoBanner');
             if (promoBanner) {
                 const observer = new IntersectionObserver((entries) => {
@@ -1412,6 +1421,26 @@
                     });
                 }, { threshold: 0.3 }); 
                 observer.observe(promoBanner);
+            }
+
+            // Hiệu ứng cho các Combo Box
+            const comboBoxes = document.querySelectorAll('.combo-box');
+            if (comboBoxes.length > 0) {
+                const comboObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            // Thêm độ trễ (delay) cho từng hộp để tạo hiệu ứng xuất hiện lần lượt
+                            setTimeout(() => {
+                                entry.target.classList.add('in-view');
+                            }, index * 200);
+                            comboObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+                comboBoxes.forEach(box => {
+                    comboObserver.observe(box);
+                });
             }
         });
     </script>

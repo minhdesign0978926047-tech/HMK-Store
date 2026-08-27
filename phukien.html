@@ -259,23 +259,46 @@
             margin-bottom: 15px;
         }
 
+        /* --- CẤU TRÚC THÔNG TIN SẢN PHẨM MỚI --- */
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            gap: 10px;
+        }
+
         .product-name {
             font-size: 14px;
             font-weight: 700;
-            color: #1d1d1f;
-            margin-bottom: 6px;
+            color: #111;
             line-height: 1.3;
-            min-height: 36px;
+            flex: 1;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        .rating-stars {
-            color: #ffcc00;
-            font-size: 11px;
-            margin-bottom: 10px;
+        .product-price {
+            color: #ea3a3d;
+            font-size: 15px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .rating-row {
+            color: #ffb800;
+            font-size: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 600;
+        }
+
+        .rating-row span {
+            color: #666;
         }
 
         .product-bottom {
@@ -283,31 +306,6 @@
             flex-direction: column;
             gap: 12px;
             margin-top: auto;
-        }
-
-        .price-color-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .color-dots {
-            display: flex;
-            gap: 5px;
-        }
-
-        .color-dots .dot-color {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            border: 1px solid #ddd;
-            display: inline-block;
-        }
-
-        .price {
-            color: #e00000;
-            font-weight: 800;
-            font-size: 14px;
         }
 
         .btn-add-cart {
@@ -500,7 +498,7 @@
         
         <div class="header-actions">
             <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-magnifying-glass" style="color: #888;"></i>
                 <input type="text" placeholder="Tìm kiếm sản phẩm...">
             </div>
             
@@ -520,7 +518,7 @@
     <!-- 2. MAIN CONTENT -->
     <div class="container">
         
-        <!-- BANNER TRƯỢT NGANG TỰ ĐỘNG (3 GIÂY) -->
+        <!-- BANNER TRƯỢT TỰ ĐỘNG (3 GIÂY) -->
         <div class="hero-slider-container" id="heroSlider">
             <div class="hero-slider-track" id="sliderTrack">
                 <div class="hero-slide-item">
@@ -540,7 +538,7 @@
             </div>
         </div>
 
-<h1 class="section-title">Phụ kiện</h1>
+        <h1 class="section-title">Phụ kiện</h1>
 
         <!-- Product Grid Wrapper -->
         <div class="products-wrapper">
@@ -549,429 +547,357 @@
                 <!-- 1. Ốp iPhone Silicone Xanh -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MPU13?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1661471383701" alt="Ốp Silicone iPhone">
-                    <div>
-                        <div class="product-name">Ốp lưng Silicone iPhone với MagSafe</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">Ốp lưng Silicone iPhone với MagSafe</div>
+                            <div class="product-price">1.190.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#708090;"></span>
-                                <span class="dot-color" style="background:#556b2f;"></span>
-                                <span class="dot-color" style="background:#f5f5dc;"></span>
-                            </div>
-                            <div class="price">1.190.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('Ốp lưng Silicone iPhone với MagSafe', 1190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MPU13?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1661471383701')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('Ốp lưng Silicone iPhone với MagSafe', 1190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MPU13?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1661471383701')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 2. Ốp Nhựa Trong MagSafe -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MPT13?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1660928236102" alt="Ốp Trong MagSafe">
-                    <div>
-                        <div class="product-name">Ốp lưng trong suốt với MagSafe</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">Ốp lưng trong suốt với MagSafe</div>
+                            <div class="product-price">1.190.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">1.190.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('Ốp lưng trong suốt với MagSafe', 1190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MPT13?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1660928236102')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('Ốp lưng trong suốt với MagSafe', 1190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MPT13?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1660928236102')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 3. Ốp Silicone Hồng -->
                 <div class="product-card">
                     <img class="product-img" src="oph.webp" alt="Ốp Hồng">
-                    <div>
-                        <div class="product-name">Ốp lưng Silicone với MagSafe (Hồng)</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">Ốp lưng Silicone với MagSafe (Hồng)</div>
+                            <div class="product-price">490.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffb6c1;"></span>
-                                <span class="dot-color" style="background:#000000;"></span>
-                            </div>
-                            <div class="price">490.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('Ốp lưng Silicone với MagSafe (Hồng)', 490000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MPU23?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1661471383701')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('Ốp lưng Silicone với MagSafe (Hồng)', 490000, 'oph.webp')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 4. Ốp Silicone Xanh Nhạt -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MM103?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1629931888000" alt="Ốp Xanh Nhạt">
-                    <div>
-                        <div class="product-name">Ốp lưng Silicone iPhone Basic</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">Ốp lưng Silicone iPhone Basic</div>
+                            <div class="product-price">290.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#b0e0e6;"></span>
-                                <span class="dot-color" style="background:#708090;"></span>
-                            </div>
-                            <div class="price">290.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('Ốp lưng Silicone iPhone Basic', 290000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MM103?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1629931888000')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('Ốp lưng Silicone iPhone Basic', 290000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MM103?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1629931888000')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 5. Ốp Vàng Chanh MagSafe -->
                 <div class="product-card">
                     <img class="product-img" src="opv.webp" alt="Ốp Vàng">
-                    <div>
-                        <div class="product-name">Ốp lưng Silicone MagSafe Yellow</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">Ốp lưng Silicone MagSafe Yellow</div>
+                            <div class="product-price">1.190.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffff00;"></span>
-                                <span class="dot-color" style="background:#ffa500;"></span>
-                            </div>
-                            <div class="price">1.190.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('Ốp lưng Silicone MagSafe Yellow', 1190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MPU33?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1661471383701')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('Ốp lưng Silicone MagSafe Yellow', 1190000, 'opv.webp')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 6. Ví Bumper MagSafe -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MM0Q3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1630026210000" alt="Bumper MagSafe">
-                    <div>
-                        <div class="product-name">Ví Bumper MagSafe Apple</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">Ví Bumper MagSafe Apple</div>
+                            <div class="product-price">990.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#1d1d1f;"></span>
-                            </div>
-                            <div class="price">990.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('Ví Bumper MagSafe Apple', 990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MM0Q3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1630026210000')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('Ví Bumper MagSafe Apple', 990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MM0Q3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1630026210000')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 7. Củ sạc 20W USB-C -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHJE3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1602800882000" alt="Củ sạc 20W">
-                    <div>
-                        <div class="product-name">Củ sạc 20W USB-C Power Adapter</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">Củ sạc 20W USB-C Power Adapter</div>
+                            <div class="product-price">550.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">550.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('Củ sạc 20W USB-C Power Adapter', 550000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHJE3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1602800882000')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('Củ sạc 20W USB-C Power Adapter', 550000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHJE3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1602800882000')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 8. Củ sạc 35W Dual Port -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MNWM3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1652736673836" alt="Củ sạc 35W">
-                    <div>
-                        <div class="product-name">Củ sạc 35W Dual USB-C Port Adapter</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">Củ sạc 35W Dual USB-C Port Adapter</div>
+                            <div class="product-price">890.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">890.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('Củ sạc 35W Dual USB-C Port Adapter', 890000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MNWM3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1652736673836')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('Củ sạc 35W Dual USB-C Port Adapter', 890000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MNWM3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1652736673836')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 9. Củ sạc 140W USB-C -->
                 <div class="product-card">
                     <img class="product-img" src="s140.webp" alt="Củ sạc 140W">
-                    <div>
-                        <div class="product-name">Củ sạc 140W USB-C Power Adapter</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">Củ sạc 140W USB-C Power Adapter</div>
+                            <div class="product-price">1.490.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">1.490.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('Củ sạc 140W USB-C Power Adapter', 1490000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MW2U3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1632766861000')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('Củ sạc 140W USB-C Power Adapter', 1490000, 's140.webp')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 10. Sạc MagSafe Charger -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHXH3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1603996255000" alt="MagSafe Charger">
-                    <div>
-                        <div class="product-name">Sạc không dây MagSafe Charger</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">Sạc không dây MagSafe Charger</div>
+                            <div class="product-price">1.190.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">1.190.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('Sạc không dây MagSafe Charger', 1190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHXH3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1603996255000')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('Sạc không dây MagSafe Charger', 1190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHXH3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1603996255000')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 11. Cáp MagSafe Apple Watch -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX2E2?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1568328221000" alt="Apple Watch Charger">
-                    <div>
-                        <div class="product-name">Cáp sạc MagSafe Apple Watch (1m)</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">Cáp sạc MagSafe Apple Watch (1m)</div>
+                            <div class="product-price">790.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">790.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('Cáp sạc MagSafe Apple Watch (1m)', 790000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX2E2?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1568328221000')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('Cáp sạc MagSafe Apple Watch (1m)', 790000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX2E2?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1568328221000')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 12. Củ sạc 30W USB-C -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MY1W2?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1600109053000" alt="Củ sạc 30W">
-                    <div>
-                        <div class="product-name">Củ sạc 30W USB-C Power Adapter</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">Củ sạc 30W USB-C Power Adapter</div>
+                            <div class="product-price">1.190.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">1.190.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('Củ sạc 30W USB-C Power Adapter', 1190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MY1W2?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1600109053000')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('Củ sạc 30W USB-C Power Adapter', 1190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MY1W2?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1600109053000')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 13. AirPods Max (Đen) -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1604709508000" alt="AirPods Max Space Gray">
-                    <div>
-                        <div class="product-name">AirPods Max - Space Gray</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">AirPods Max - Space Gray</div>
+                            <div class="product-price">13.190.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#333;"></span>
-                                <span class="dot-color" style="background:#eee;"></span>
-                                <span class="dot-color" style="background:#87ceeb;"></span>
-                            </div>
-                            <div class="price">13.190.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('AirPods Max - Space Gray', 13190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1604709508000')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('AirPods Max - Space Gray', 13190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1604709508000')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 14. AirPods Max (Xanh) -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-skyblue-202011?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1604709508000" alt="AirPods Max Sky Blue">
-                    <div>
-                        <div class="product-name">AirPods Max - Sky Blue</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">AirPods Max - Sky Blue</div>
+                            <div class="product-price">12.690.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#87ceeb;"></span>
-                                <span class="dot-color" style="background:#333;"></span>
-                            </div>
-                            <div class="price">12.690.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('AirPods Max - Sky Blue', 12690000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-skyblue-202011?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1604709508000')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('AirPods Max - Sky Blue', 12690000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-skyblue-202011?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1604709508000')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 15. AirPods Max (Bạc) -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-silver-202011?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1604709508000" alt="AirPods Max Silver">
-                    <div>
-                        <div class="product-name">AirPods Max - Silver</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">AirPods Max - Silver</div>
+                            <div class="product-price">14.990.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                                <span class="dot-color" style="background:#333;"></span>
-                            </div>
-                            <div class="price">14.990.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('AirPods Max - Silver', 14990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-silver-202011?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1604709508000')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('AirPods Max - Silver', 14990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-silver-202011?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1604709508000')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 16. EarPods cổng USB-C -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJY3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1693526618302" alt="EarPods USB-C">
-                    <div>
-                        <div class="product-name">EarPods USB-C</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">EarPods USB-C</div>
+                            <div class="product-price">540.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">540.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('EarPods USB-C', 540000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJY3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1693526618302')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('EarPods USB-C', 540000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJY3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1693526618302')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 17. AirPods (Thế hệ 3) -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1632861342000" alt="AirPods 3">
-                    <div>
-                        <div class="product-name">AirPods (Thế hệ 3) MagSafe</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">AirPods (Thế hệ 3) MagSafe</div>
+                            <div class="product-price">3.990.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">3.990.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('AirPods (Thế hệ 3) MagSafe', 3990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1632861342000')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('AirPods (Thế hệ 3) MagSafe', 3990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1632861342000')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 18. AirPods (Thế hệ 2) -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MV7N2?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1551489688005" alt="AirPods 2">
-                    <div>
-                        <div class="product-name">AirPods 2</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">AirPods 2</div>
+                            <div class="product-price">2.890.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">2.890.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('AirPods 2', 2890000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MV7N2?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1551489688005')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('AirPods 2', 2890000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MV7N2?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1551489688005')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 19. AirPods Pro (Thế hệ 2) -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQD83?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1660803972361" alt="AirPods Pro 2">
-                    <div>
-                        <div class="product-name">AirPods Pro 2</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">AirPods Pro 2</div>
+                            <div class="product-price">6.190.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">6.190.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('AirPods Pro 2', 6190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQD83?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1660803972361')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('AirPods Pro 2', 6190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQD83?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1660803972361')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 20. AirPods 3 Hộp Sạc Lightning -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1632861342000" alt="AirPods 3 Lightning">
-                    <div>
-                        <div class="product-name">AirPods 3 (Hộp Sạc Lightning)</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">AirPods 3 (Hộp Sạc Lightning)</div>
+                            <div class="product-price">3.490.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">3.490.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('AirPods 3 (Hộp Sạc Lightning)', 3490000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1632861342000')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('AirPods 3 (Hộp Sạc Lightning)', 3490000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1632861342000')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 21. EarPods cổng Lightning -->
                 <div class="product-card">
                     <img class="product-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MMTN2?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1472063870002" alt="EarPods Lightning">
-                    <div>
-                        <div class="product-name">EarPods Lightning</div>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div style="display: flex; flex-direction: column; flex: 1;">
+                        <div class="card-info">
+                            <div class="product-name">EarPods Lightning</div>
+                            <div class="product-price">510.000đ</div>
                         </div>
-                    </div>
-                    <div class="product-bottom">
-                        <div class="price-color-row">
-                            <div class="color-dots">
-                                <span class="dot-color" style="background:#ffffff;"></span>
-                            </div>
-                            <div class="price">510.000đ</div>
+                        <div class="rating-row">
+                            <i class="fa-solid fa-star"></i> <span>4.9</span>
                         </div>
-                        <button class="btn-add-cart" onclick="addToCart('EarPods Lightning', 510000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MMTN2?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1472063870002')">Thêm vào giỏ hàng</button>
+                        <div class="product-bottom">
+                            <button class="btn-add-cart" onclick="addToCart('EarPods Lightning', 510000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MMTN2?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1472063870002')">Thêm vào giỏ hàng</button>
+                        </div>
                     </div>
                 </div>
 
@@ -1058,20 +984,19 @@
 
         // Thêm sản phẩm vào giỏ hàng
         function addToCart(name, price, img) {
-    let cart = JSON.parse(localStorage.getItem('hkm_cart')) || [];
-    let existingItem = cart.find(item => item.name === name);
-    
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        // Đã sửa thành image: img
-        cart.push({ name: name, price: price, image: img, quantity: 1, rating: 4.9 });
-    }
-    
-    localStorage.setItem('hkm_cart', JSON.stringify(cart));
-    updateHeaderBadge();
-    alert(`Đã thêm "${name}" vào giỏ hàng thành công!`);
-}
+            let cart = JSON.parse(localStorage.getItem('hkm_cart')) || [];
+            let existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: name, price: price, image: img, quantity: 1, rating: 4.9 });
+            }
+            
+            localStorage.setItem('hkm_cart', JSON.stringify(cart));
+            updateHeaderBadge();
+            alert(`Đã thêm "${name}" vào giỏ hàng thành công!`);
+        }
 
         // Kiểm tra trạng thái đăng nhập
         function checkLoginStatus() {
