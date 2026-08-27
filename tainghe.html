@@ -269,7 +269,7 @@
         </div>
     </div>
 
-   <!-- 3. FOOTER ĐỒNG BỘ CHUẨN TỪ INDEX -->
+     <!-- 3. FOOTER ĐỒNG BỘ CHUẨN TỪ INDEX -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -330,3 +330,99 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function updateHeaderBadge() {
+            let cart = JSON.parse(localStorage.getItem('hkm_cart')) || [];
+            let totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const badge = document.getElementById('cartBadge');
+            if (badge) {
+                badge.textContent = totalQty;
+                badge.classList.add('bump');
+                setTimeout(() => badge.classList.remove('bump'), 200);
+            }
+        }
+
+        // Cập nhật hàm addToCart
+        function addToCart(buttonElement, name, price, img) {
+            let cart = JSON.parse(localStorage.getItem('hkm_cart')) || [];
+            let existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: name, price: price, image: img, quantity: 1, rating: 4.9 });
+            }
+            localStorage.setItem('hkm_cart', JSON.stringify(cart));
+            updateHeaderBadge();
+            
+            // Xóa phần alert, thêm hiệu ứng đổi màu nút
+            const originalText = buttonElement.innerHTML;
+            buttonElement.classList.add('added');
+            buttonElement.innerHTML = `Đã thêm ✓`;
+            
+            setTimeout(() => {
+                buttonElement.classList.remove('added');
+                buttonElement.innerHTML = originalText;
+            }, 1500);
+        }
+
+        function checkLoginStatus() {
+            const currentUser = JSON.parse(localStorage.getItem('hkm_currentUser'));
+            const container = document.getElementById('userAccountContainer');
+            if (currentUser && container) {
+                container.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <a href="profile.html" style="font-weight: 600; color: #0066ff; text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-regular fa-user" style="font-size: 16px;"></i> 
+                            <span>Chào, ${currentUser.name}</span>
+                        </a>
+                        <button onclick="handleLogout()" style="border:none; background:transparent; color:#ff3b30; cursor:pointer; font-size:12px; font-weight:600; padding:0;">[Thoát]</button>
+                    </div>
+                `;
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('hkm_currentUser');
+            alert('Đã đăng xuất!');
+            window.location.reload();
+        }
+
+        let currentSlideIndex = 0;
+        const totalSlides = 3;
+        
+        function updateSlide() {
+            const track = document.getElementById('sliderTrack');
+            const dots = document.querySelectorAll('.slider-dots .dot');
+            if(track) {
+                track.style.transform = `translateX(-${currentSlideIndex * (100 / totalSlides)}%)`;
+            }
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlideIndex);
+            });
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+            updateSlide();
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index;
+            updateSlide();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateHeaderBadge();
+            checkLoginStatus();
+
+            let slideInterval = setInterval(nextSlide, 3000);
+            const sliderContainer = document.getElementById('heroSlider');
+            if (sliderContainer) {
+                sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+                sliderContainer.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 3000));
+            }
+        });
+    </script>
+</body>
+</html>
