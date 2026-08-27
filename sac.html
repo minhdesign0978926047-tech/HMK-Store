@@ -68,6 +68,9 @@
         
         .btn-add-cart { width: 100%; background-color: #1c1c1e; color: #ffffff; border: none; padding: 12px 0; border-radius: 12px; font-weight: 600; font-size: 13px; cursor: pointer; transition: background 0.2s; text-align: center; }
         .btn-add-cart:hover { background-color: #0066ff; }
+        
+        /* CSS cho nút trạng thái Đã Thêm */
+        .btn-add-cart.added { background-color: #22c55e !important; color: #ffffff !important; }
 
         @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } .hero-slider-container { height: 250px; } }
         @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } .hero-slider-container { height: 180px; } }
@@ -145,7 +148,7 @@
                             <div class="product-price">990.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('Type C 18W', 990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MU7T2?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'Type C 18W', 990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MU7T2?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -159,7 +162,7 @@
                             <div class="product-price">520.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('20w USB-C', 520000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHJE3?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, '20w USB-C', 520000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHJE3?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -173,7 +176,7 @@
                             <div class="product-price">1.475.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('Type-C 70W', 1475000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQLN3?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'Type-C 70W', 1475000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQLN3?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -187,7 +190,7 @@
                             <div class="product-price">1.390.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('Bộ sạc MagSafe', 1390000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHXH3?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'Bộ sạc MagSafe', 1390000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHXH3?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -201,7 +204,7 @@
                             <div class="product-price">790.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('USB-C dây dù', 790000, 'day.webp')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'USB-C dây dù', 790000, 'day.webp')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -215,7 +218,7 @@
                             <div class="product-price">2.320.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('140W USB-C', 2320000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MLYU3?wid=532&hei=532&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, '140W USB-C', 2320000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MLYU3?wid=532&hei=532&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -229,7 +232,7 @@
                             <div class="product-price">390.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('iPhone 5W', 390000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MD818?wid=532&hei=532&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'iPhone 5W', 390000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MD818?wid=532&hei=532&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -243,7 +246,7 @@
                             <div class="product-price">990.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('30W Type-C', 990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MY1W2?wid=532&hei=532&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, '30W Type-C', 990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MY1W2?wid=532&hei=532&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -257,7 +260,7 @@
                             <div class="product-price">1.390.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('2 cổng Type-C 35W', 1390000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MNWM3?wid=532&hei=532&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, '2 cổng Type-C 35W', 1390000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MNWM3?wid=532&hei=532&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -265,7 +268,7 @@
         </div>
     </div>
 
-    <!-- 3. FOOTER -->
+    <!-- 5. FOOTER -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -333,7 +336,7 @@
             }
         }
 
-        function addToCart(name, price, img) {
+        function addToCart(buttonElement, name, price, img) {
             let cart = JSON.parse(localStorage.getItem('hkm_cart')) || [];
             let existingItem = cart.find(item => item.name === name);
             if (existingItem) {
@@ -343,7 +346,16 @@
             }
             localStorage.setItem('hkm_cart', JSON.stringify(cart));
             updateHeaderBadge();
-            alert(`Đã thêm "${name}" vào giỏ hàng thành công!`);
+            
+            // Cập nhật hiệu ứng đổi màu nút
+            const originalText = buttonElement.innerHTML;
+            buttonElement.classList.add('added');
+            buttonElement.innerHTML = `Đã thêm ✓`;
+            
+            setTimeout(() => {
+                buttonElement.classList.remove('added');
+                buttonElement.innerHTML = originalText;
+            }, 1500);
         }
 
         function checkLoginStatus() {

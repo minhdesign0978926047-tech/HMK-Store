@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone 17 Pro Max - HKM Store</title>
+    <title>Chi tiết Phụ kiện - HKM Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,11 +28,11 @@
         .cart-badge { position: absolute; top: -8px; right: -10px; background: #0066ff; color: #fff; font-size: 11px; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; font-weight: bold; }
         .cart-badge.bump { transform: scale(1.4); }
 
-        /* --- BỐ CỤC CHUNG TRANG CHI TIẾT --- */
+        /* --- BỐ CỤC CHUNG --- */
         .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         .section-title { text-align: center; font-size: 32px; font-weight: 800; color: #0066ff; margin: 60px 0 30px; }
 
-        /* --- 1. PHẦN TRÊN: ẢNH VÀ THÔNG TIN --- */
+        /* --- PHẦN TRÊN: ẢNH VÀ THÔNG TIN --- */
         .product-top { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; background: #fff; padding: 40px; border-radius: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
         
         .gallery-main { width: 100%; border-radius: 20px; overflow: hidden; background: transparent; display: flex; align-items: center; justify-content: center; height: 500px; position: relative; }
@@ -41,19 +41,15 @@
         .gallery-thumbs img { width: 80px; height: 80px; border-radius: 12px; border: 2px solid #eee; cursor: pointer; object-fit: cover; transition: 0.2s; }
         .gallery-thumbs img:hover, .gallery-thumbs img.active { border-color: #0066ff; }
 
-        .info-panel { display: flex; flex-direction: column; }
+        .info-panel { display: flex; flex-direction: column; justify-content: center; }
         .info-category { font-size: 13px; font-weight: 700; color: #0066ff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
         .info-title { font-size: 38px; font-weight: 800; color: #111; margin-bottom: 10px; line-height: 1.2; }
         .info-rating { color: #ffb800; font-size: 13px; margin-bottom: 25px; display: flex; align-items: center; gap: 6px; }
         .info-rating span { color: #666; font-weight: 600; }
+        .info-desc { font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 25px; }
         .info-price { font-size: 32px; font-weight: 800; color: #ea3a3d; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee; transition: color 0.3s; }
 
-        /* Khối chọn dung lượng */
-        .capacity-selector { display: flex; background: #f4f5f8; border-radius: 40px; padding: 6px; margin-bottom: 25px; }
-        .cap-btn { flex: 1; text-align: center; padding: 14px 0; border-radius: 30px; font-size: 14px; font-weight: 700; color: #555; cursor: pointer; transition: all 0.2s; }
-        .cap-btn.active { background: #fff; color: #0066ff; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-
-        .delivery-info { display: flex; justify-content: center; gap: 30px; font-size: 13px; font-weight: 600; color: #0066ff; margin-bottom: 30px; }
+        .delivery-info { display: flex; justify-content: flex-start; gap: 30px; font-size: 13px; font-weight: 600; color: #0066ff; margin-bottom: 30px; }
         .delivery-info i { margin-right: 6px; }
 
         /* Nút hành động */
@@ -64,50 +60,8 @@
         
         .btn-buy { background: #f0f0f0; color: #111; border: none; padding: 16px; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; }
         .btn-buy:hover { background: #e0e0e0; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); }
-        
-        .installment-text { text-align: center; font-size: 12px; color: #666; margin-top: 15px; }
-        .installment-text a { color: #0066ff; text-decoration: none; font-weight: 600; }
 
-        /* --- 2. TÍNH NĂNG NỔI BẬT --- */
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-        .feature-card { background: #fff; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
-        .feature-icon { width: 44px; height: 44px; background: #f0f6ff; color: #0066ff; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 18px; margin-bottom: 20px; }
-        .feature-tag { font-size: 11px; font-weight: 700; color: #0066ff; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
-        .feature-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 12px; color: #111; }
-        .feature-card p { font-size: 13px; color: #666; line-height: 1.6; }
-
-        /* --- 3. MUA KÈM PHỤ KIỆN --- */
-        .acc-header { display: flex; justify-content: space-between; align-items: center; margin: 60px 0 20px; }
-        .acc-header h2 { font-size: 26px; font-weight: 800; color: #0066ff; }
-        .acc-header a { font-size: 14px; font-weight: 600; color: #0066ff; text-decoration: none; }
-        .acc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-        .acc-card { background: #fff; border-radius: 20px; padding: 25px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
-        .acc-card img { width: 80px; height: 80px; object-fit: contain; }
-        .acc-info { flex: 1; }
-        .acc-info .tag { font-size: 11px; font-weight: 700; color: #888; margin-bottom: 4px; text-transform: uppercase; }
-        .acc-info h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: #111; }
-        .acc-info p { font-size: 12px; color: #666; margin-bottom: 12px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .acc-bottom { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-top: 10px; }
-        .acc-bottom .price { font-weight: 800; color: #111; font-size: 16px; }
-        .acc-add-btn { background: #fff; border: 1px solid #ddd; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; }
-        .acc-add-btn:hover { border-color: #0066ff; color: #0066ff; background: #f0f6ff; }
-        .acc-add-btn.added { background-color: #22c55e !important; color: #ffffff !important; border-color: #22c55e !important; }
-
-        /* --- 4. THÔNG SỐ KỸ THUẬT --- */
-        .specs-wrapper { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
-        .specs-table { background: #fcfcfc; border-radius: 16px; overflow: hidden; border: 1px solid #eee; }
-        .specs-table table { width: 100%; border-collapse: collapse; }
-        .specs-table td { padding: 16px 20px; font-size: 14px; border-bottom: 1px solid #eee; line-height: 1.5; }
-        .specs-table tr td:first-child { width: 35%; color: #666; font-weight: 600; background: #f4f5f8; }
-        .specs-table tr td:last-child { color: #111; font-weight: 500; }
-        .specs-table tr:last-child td { border-bottom: none; }
-
-        .specs-cards { display: flex; flex-direction: column; gap: 15px; }
-        .spec-info-card { background: #fff; border: 1px solid #eee; border-radius: 16px; padding: 25px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.01); display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .spec-info-card i { font-size: 24px; color: #0066ff; margin-bottom: 15px; }
-        .spec-info-card p { font-size: 13px; color: #555; line-height: 1.5; }
-
-        /* --- 5. CÓ THỂ BẠN CŨNG THÍCH --- */
+        /* --- CÓ THỂ BẠN CŨNG THÍCH --- */
         .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
         .product-card { background: #fff; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.02); transition: transform 0.2s; }
         .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.06); }
@@ -127,7 +81,7 @@
         .modal-title { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 20px; text-align: center; }
         .modal-form-group { margin-bottom: 15px; }
         .modal-form-group label { display: block; font-size: 13px; font-weight: 700; color: #444; margin-bottom: 6px; }
-        .modal-form-group input[type="text"], .modal-form-group input[type="email"], .modal-form-group input[type="password"], .modal-form-group input[type="tel"] { width: 100%; padding: 12px 15px; border: 1px solid #dcdcdc; border-radius: 10px; outline: none; font-size: 14px; background: #fcfcfc; }
+        .modal-form-group input { width: 100%; padding: 12px 15px; border: 1px solid #dcdcdc; border-radius: 10px; outline: none; font-size: 14px; background: #fcfcfc; }
         .modal-btn { background: #0066ff; color: #fff; border: none; width: 100%; padding: 13px; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px; transition: background 0.2s;}
         .modal-btn:hover { background: #0052cc; }
         .modal-switch-text { font-size: 13px; text-align: center; margin-top: 15px; color: #666; }
@@ -144,7 +98,7 @@
         .customer-info-box strong { color: #111; }
 
         /* --- FOOTER CHUẨN ĐỒNG BỘ --- */
-        footer { background-color: #0066ff; color: #ffffff; padding: 50px 8% 20px; }
+        footer { background-color: #0066ff; color: #ffffff; padding: 50px 8% 20px; margin-top: 60px;}
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 40px; margin-bottom: 40px; }
         .footer-logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 20px; color: #ffffff; text-decoration: none; margin-bottom: 15px; }
         .footer-logo .logo-box { width: 38px; height: 38px; background-color: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
@@ -165,19 +119,18 @@
 
         @media (max-width: 900px) {
             .product-top { grid-template-columns: 1fr; gap: 30px; }
-            .features-grid, .specs-wrapper { grid-template-columns: 1fr; }
             .related-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 600px) {
-            .related-grid, .acc-grid { grid-template-columns: 1fr; }
+            .related-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. HEADER ĐỒNG BỘ -->
+    <!-- HEADER ĐỒNG BỘ -->
     <header>
         <div class="header-left">
             <a href="index.html" class="logo">
@@ -199,16 +152,12 @@
         
         <div class="header-actions">
             <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass" style="color: #888;"></i>
+                <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Tìm kiếm sản phẩm...">
             </div>
-            
             <div class="user-account-container" id="userAccountContainer">
-                <a href="auth.html" style="color:#000; text-decoration:none;">
-                    <i class="fa-regular fa-user"></i>
-                </a>
+                <a href="auth.html"><i class="fa-regular fa-user"></i></a>
             </div>
-
             <a href="cart.html" class="cart-icon">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="cart-badge" id="cartBadge">0</span>
@@ -217,147 +166,40 @@
     </header>
 
     <div class="container">
-        
         <!-- PHẦN TRÊN CÙNG: ẢNH & THÔNG TIN CHÍNH -->
         <div class="product-top">
+            <!-- Khối Ảnh -->
             <div class="product-gallery">
                 <div class="gallery-main">
-                    <img id="mainImage" src="17cam.webp"  alt="iPhone 17 Pro Max">
+                    <img id="mainImage" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MPU13?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1661471383701"  alt="Ốp lưng Silicone iPhone với MagSafe">
                 </div>
                 <div class="gallery-thumbs">
-                    <img src="17cam.webp" class="active" onclick="changeImage(this)">
-                    <img src="17cam1.webp" onclick="changeImage(this)">
-                    <img src="17cam2.webp" onclick="changeImage(this)">
+                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MPU13?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1661471383701" class="active" onclick="changeImage(this)">
                 </div>
             </div>
 
+            <!-- Khối Thông Tin -->
             <div class="info-panel">
-                <div class="info-category">Điện thoại</div>
-                <h1 class="info-title" id="productNameTitle">iPhone 17 Pro Max</h1>
+                <div class="info-category">Phụ kiện Ốp lưng</div>
+                <h1 class="info-title" id="productNameTitle">Ốp lưng Silicone iPhone với MagSafe</h1>
                 <div class="info-rating">
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> 
                     <span>4.9</span>
                 </div>
                 
-                <div class="info-price" id="productPrice">34.990.000đ</div>
-
-                <div class="capacity-selector">
-                    <div class="cap-btn active" onclick="selectCapacity(this, 34990000)">256GB</div>
-                    <div class="cap-btn" onclick="selectCapacity(this, 39990000)">512GB</div>
-                    <div class="cap-btn" onclick="selectCapacity(this, 44990000)">1TB</div>
-                </div>
+                <p class="info-desc">Được thiết kế hoàn thiện từ chất liệu Silicone cao cấp, chiếc ốp lưng này không chỉ mang lại cảm giác mềm mại khi cầm nắm mà còn hỗ trợ sạc MagSafe một cách hoàn hảo.</p>
+                
+                <div class="info-price" id="productPrice">1.190.000đ</div>
 
                 <div class="delivery-info">
-                    <span><i class="fa-solid fa-truck"></i> Giao hàng trong 2 ngày</span>
-                    <span><i class="fa-solid fa-shield-halved"></i> Bảo hành 1 năm</span>
+                    <span><i class="fa-solid fa-truck"></i> Giao hàng miễn phí toàn quốc</span>
+                    <span><i class="fa-solid fa-shield-halved"></i> Đổi trả trong 30 ngày</span>
                 </div>
 
+                <!-- Nút Hành Động -->
                 <div class="action-buttons">
                     <button class="btn-add" id="btnMainAddToCart" onclick="addDetailToCart(this)"><i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng</button>
                     <button class="btn-buy" onclick="handleBuyNow()">Mua ngay</button>
-                </div>
-                
-                <div class="installment-text">
-                    Hoặc trả góp từ 2.332.700đ /tháng. <a href="#">Tìm hiểu thêm →</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- TÍNH NĂNG NỔI BẬT -->
-        <h2 class="section-title">Tính năng nổi bật</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-camera"></i></div>
-                <div class="feature-tag">PRO CAMERA</div>
-                <h3>ZOOM XA ẤN TƯỢNG</h3>
-                <p>Với tiêu cự tương đương 200 mm, thu phóng chất lượng quang học 8x, đây là ống kính Telephoto dài nhất từng có trên iPhone, mang đến phạm vi thu phóng quang học 16x.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-battery-full"></i></div>
-                <div class="feature-tag">PIN ĐỦ DÙNG CHO CẢ NGÀY</div>
-                <h3>37H XEM VIDEO</h3>
-                <p>Thiết kế mới bên trong tạo thêm không gian đáng kể cho dung lượng pin nên iPhone 17 Pro Max có thời lượng pin tốt nhất từng có trên iPhone.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
-                <div class="feature-tag">CHIP A19 PRO</div>
-                <h3>HIỆU NĂNG VƯỢT TRỘI</h3>
-                <p>3nm architecture with a dedicated AI core. 40% faster than its predecessor, consuming half the power. Khả năng xử lý đồ họa Ray Tracing đỉnh cao.</p>
-            </div>
-        </div>
-
-        <!-- MUA KÈM PHỤ KIỆN -->
-        <div class="acc-header">
-            <h2>Mua kèm phụ kiện</h2>
-            <a href="phukien.html">Tất cả phụ kiện ></a>
-        </div>
-        <div class="acc-grid">
-            <div class="acc-card">
-                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT213?wid=532&hei=582&fmt=png-alpha" alt="Ốp lưng">
-                <div class="acc-info">
-                    <div class="tag">ỐP</div>
-                    <h4>Silicone With Magsafe</h4>
-                    <p>Nam châm tích hợp có thể căn chỉnh hoàn hảo, thuận tiện và sạc không dây.</p>
-                </div>
-                <div class="acc-bottom">
-                    <span class="price">1.150.000đ</span>
-                    <button class="acc-add-btn" onclick="addToCartFast(this, 'Silicone With Magsafe', 1150000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT213?wid=532&hei=582&fmt=png-alpha')">Thêm</button>
-                </div>
-            </div>
-            <div class="acc-card">
-                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHJE3?wid=532&hei=582&fmt=png-alpha" alt="Sạc">
-                <div class="acc-info">
-                    <div class="tag">SẠC</div>
-                    <h4>20w USB-C</h4>
-                    <p>Bảo vệ sản phẩm tránh quá dòng, quá điện áp hay hiện tượng mạch điện bị chập và quá nhiệt.</p>
-                </div>
-                <div class="acc-bottom">
-                    <span class="price">520.000đ</span>
-                    <button class="acc-add-btn" onclick="addToCartFast(this, 'Sạc 20w USB-C', 520000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHJE3?wid=532&hei=582&fmt=png-alpha')">Thêm</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- THÔNG SỐ KỸ THUẬT -->
-        <h2 class="section-title">Thông số kỹ thuật</h2>
-        <div class="specs-wrapper">
-            <div class="specs-table">
-                <table>
-                    <tr><td>Hệ điều hành khi ra mắt</td><td>iOS 26</td></tr>
-                    <tr><td>Chipset</td><td>Chip A19 Pro</td></tr>
-                    <tr><td>Bộ nhớ trong</td><td>256/512 GB, 1 TB</td></tr>
-                    <tr><td>Loại CPU</td><td>CPU 6 lõi với 2 lõi hiệu năng và 4 lõi tiết kiệm điện</td></tr>
-                    <tr><td>GPU</td><td>GPU 6 lõi với Neural Accelerator</td></tr>
-                    <tr><td>Kích thước màn hình</td><td>6.9 inches</td></tr>
-                    <tr><td>Công nghệ màn hình</td><td>Super Retina XDR</td></tr>
-                    <tr><td>Độ phân giải màn hình</td><td>2868 x 1320 pixels</td></tr>
-                    <tr>
-                        <td>Tính năng màn hình</td>
-                        <td>Màn hình Luôn Bật, ProMotion 120Hz, HDR, True Tone, Dải màu rộng (P3), Haptic Touch, Tỷ lệ tương phản 2.000.000:1, Độ sáng 1000 nit (tiêu chuẩn), 1600 nit (HDR), 3000 nit (ngoài trời).</td>
-                    </tr>
-                    <tr><td>Camera sau</td><td>Chính: 48MP khẩu độ ƒ/1.6 OIS. Siêu Rộng: 48MP khẩu độ ƒ/2.2. Telephoto: 48MP khẩu độ ƒ/2.8 OIS zoom quang học.</td></tr>
-                    <tr><td>Camera trước</td><td>Camera 18MP Center Stage Khẩu độ ƒ/1.9</td></tr>
-                    <tr><td>Thẻ SIM</td><td>Sim kép (nano-Sim và e-Sim) - Hỗ trợ 2 e-Sim</td></tr>
-                    <tr><td>Công nghệ NFC</td><td>Có</td></tr>
-                    <tr><td>Thời điểm ra mắt</td><td>09/2025</td></tr>
-                </table>
-            </div>
-            <div class="specs-cards">
-                <div class="spec-info-card">
-                    <i class="fa-solid fa-box-open"></i>
-                    <p>Mới, đầy đủ phụ kiện từ nhà sản xuất</p>
-                </div>
-                <div class="spec-info-card">
-                    <i class="fa-solid fa-mobile-screen"></i>
-                    <p>Máy, Sách hướng dẫn, Cây lấy sim, Cáp Type C</p>
-                </div>
-                <div class="spec-info-card">
-                    <i class="fa-solid fa-file-invoice-dollar"></i>
-                    <p>Giá máy đã đã bao gồm thuế VAT</p>
-                </div>
-                <div class="spec-info-card">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <p>1 ĐỔI 1 trong 30 ngày nếu có lỗi phần cứng nhà sản xuất. Bảo hành 12 tháng tại trung tâm bảo hành chính hãng Apple.</p>
                 </div>
             </div>
         </div>
@@ -365,39 +207,43 @@
         <!-- CÓ THỂ BẠN CŨNG THÍCH -->
         <h2 class="section-title">Có thể bạn cũng thích</h2>
         <div class="related-grid">
+            
             <div class="product-card">
-                <img src="17a.webp" alt="iPhone 17 Air" onclick="window.location.href='chitietdt.html'">
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MPT13?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1660928236102" alt="Ốp lưng trong suốt" onclick="window.location.href='chitietpk.html'">
                 <div>
                     <div class="card-info">
-                        <span class="product-name" onclick="window.location.href='chitietdt.html'">iPhone 17 Air</span>
-                        <span class="product-price">22.990.000đ</span>
+                        <span class="product-name" onclick="window.location.href='chitietpk.html'">Ốp lưng trong suốt với MagSafe</span>
+                        <span class="product-price">1.190.000đ</span>
                     </div>
                     <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                    <button class="btn-add-cart" onclick="addToCartFast(this, 'iPhone 17 Air', 22990000, '17a.webp')">Thêm vào giỏ hàng</button>
+                    <button class="btn-add-cart" onclick="addToCartFast(this, 'Ốp lưng trong suốt với MagSafe', 1190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MPT13?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1660928236102')">Thêm vào giỏ hàng</button>
                 </div>
             </div>
+
             <div class="product-card">
-                <img src="17.webp" alt="iPhone 17" onclick="window.location.href='chitietdt.html'">
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHJE3?wid=532&hei=582&fmt=png-alpha" alt="Củ sạc 20W" onclick="window.location.href='chitietpk.html'">
                 <div>
                     <div class="card-info">
-                        <span class="product-name" onclick="window.location.href='chitietdt.html'">iPhone 17</span>
-                        <span class="product-price">17.490.000đ</span>
+                        <span class="product-name" onclick="window.location.href='chitietpk.html'">Củ sạc 20W USB-C Power Adapter</span>
+                        <span class="product-price">550.000đ</span>
                     </div>
                     <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                    <button class="btn-add-cart" onclick="addToCartFast(this, 'iPhone 17', 17490000, '17.webp')">Thêm vào giỏ hàng</button>
+                    <button class="btn-add-cart" onclick="addToCartFast(this, 'Củ sạc 20W USB-C', 550000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHJE3?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button>
                 </div>
             </div>
+
             <div class="product-card">
-                <img src="16pm.webp" alt="iPhone 16 Pro Max" onclick="window.location.href='chitietdt.html'">
+                <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHXH3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1603996255000" alt="MagSafe Charger" onclick="window.location.href='chitietpk.html'">
                 <div>
                     <div class="card-info">
-                        <span class="product-name" onclick="window.location.href='chitietdt.html'">iPhone 16 Pro Max</span>
-                        <span class="product-price">30.990.000đ</span>
+                        <span class="product-name" onclick="window.location.href='chitietpk.html'">Sạc không dây MagSafe Charger</span>
+                        <span class="product-price">1.190.000đ</span>
                     </div>
                     <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                    <button class="btn-add-cart" onclick="addToCartFast(this, 'iPhone 16 Pro Max', 30990000, '16pm.webp')">Thêm vào giỏ hàng</button>
+                    <button class="btn-add-cart" onclick="addToCartFast(this, 'Sạc không dây MagSafe Charger', 1190000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MHXH3?wid=532&hei=532&fmt=jpeg&qlt=95&.v=1603996255000')">Thêm vào giỏ hàng</button>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -504,7 +350,7 @@
         </div>
     </div>
 
-    <!-- 3. FOOTER ĐỒNG BỘ -->
+    <!-- FOOTER ĐỒNG BỘ -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -568,26 +414,15 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        let currentDetailPrice = 34990000;
-        let currentDetailName = 'iPhone 17 Pro Max (256GB)';
-        const baseName = 'iPhone 17 Pro Max';
+        // Tên và Giá của sản phẩm đang xem
+        let currentDetailPrice = 1190000;
+        let currentDetailName = 'Ốp lưng Silicone iPhone với MagSafe';
 
         function changeImage(element) {
             document.getElementById('mainImage').src = element.src;
             const thumbs = document.querySelectorAll('.gallery-thumbs img');
             thumbs.forEach(img => img.classList.remove('active'));
             element.classList.add('active');
-        }
-
-        function selectCapacity(element, price) {
-            document.querySelectorAll('.cap-btn').forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-            
-            currentDetailPrice = price;
-            document.getElementById('productPrice').textContent = price.toLocaleString('vi-VN') + 'đ';
-            
-            const capacityText = element.textContent;
-            currentDetailName = `${baseName} (${capacityText})`;
         }
 
         function addDetailToCart(btnElement) {
@@ -775,7 +610,6 @@
             document.getElementById('orderSuccessText').innerHTML = `Phương thức: <strong>${paymentText}</strong><br>Đang chuyển hướng đến đơn hàng...`;
             document.getElementById('orderSuccessModal').style.display = 'flex';
 
-            // Chuyển trang sau 2 giây
             setTimeout(() => {
                 window.location.href = 'profile.html';
             }, 2000);
@@ -820,4 +654,4 @@
         });
     </script>
 </body>
-</html>
+</html> 

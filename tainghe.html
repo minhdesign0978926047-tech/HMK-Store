@@ -68,6 +68,9 @@
         
         .btn-add-cart { width: 100%; background-color: #1c1c1e; color: #ffffff; border: none; padding: 12px 0; border-radius: 12px; font-weight: 600; font-size: 13px; cursor: pointer; transition: background 0.2s; text-align: center; }
         .btn-add-cart:hover { background-color: #0066ff; }
+        
+        /* CSS cho trạng thái đã thêm vào giỏ hàng */
+        .btn-add-cart.added { background-color: #22c55e !important; color: #ffffff !important; }
 
         @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } .hero-slider-container { height: 250px; } }
         @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } .hero-slider-container { height: 180px; } }
@@ -145,7 +148,8 @@
                             <div class="product-price">9.990.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('AirPods Max 2021', 9990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <!-- Thay đổi onlick ở đây để thêm 'this' -->
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'AirPods Max 2021', 9990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -159,7 +163,7 @@
                             <div class="product-price">12.690.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('AirPods Max 2024', 12690000, 'm24.webp')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'AirPods Max 2024', 12690000, 'm24.webp')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -173,7 +177,7 @@
                             <div class="product-price">14.990.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('AirPods Max 2 2026', 14990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'AirPods Max 2 2026', 14990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -187,7 +191,7 @@
                             <div class="product-price">540.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('EarPods USB-C', 540000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJY3?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'EarPods USB-C', 540000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MTJY3?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -201,7 +205,7 @@
                             <div class="product-price">2.990.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('AirPods 3 MagSafe', 2990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'AirPods 3 MagSafe', 2990000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -215,7 +219,7 @@
                             <div class="product-price">2.290.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('AirPods 2', 2290000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MV7N2?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'AirPods 2', 2290000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MV7N2?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -229,7 +233,7 @@
                             <div class="product-price">6.590.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('AirPods Pro 3', 6590000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQD83?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'AirPods Pro 3', 6590000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQD83?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -243,7 +247,7 @@
                             <div class="product-price">3.490.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('AirPods 4', 3490000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MXP63?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'AirPods 4', 3490000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MXP63?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -257,16 +261,15 @@
                             <div class="product-price">500.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('EarPods Lightning', 500000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MMTN2?wid=532&hei=532&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'EarPods Lightning', 500000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MMTN2?wid=532&hei=532&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
             </div>
         </div>
-
     </div>
 
-    <!-- 3. FOOTER -->
+    <!-- 5. FOOTER -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -334,7 +337,8 @@
             }
         }
 
-        function addToCart(name, price, img) {
+        // Cập nhật hàm addToCart
+        function addToCart(buttonElement, name, price, img) {
             let cart = JSON.parse(localStorage.getItem('hkm_cart')) || [];
             let existingItem = cart.find(item => item.name === name);
             if (existingItem) {
@@ -344,7 +348,16 @@
             }
             localStorage.setItem('hkm_cart', JSON.stringify(cart));
             updateHeaderBadge();
-            alert(`Đã thêm "${name}" vào giỏ hàng thành công!`);
+            
+            // Xóa phần alert, thêm hiệu ứng đổi màu nút
+            const originalText = buttonElement.innerHTML;
+            buttonElement.classList.add('added');
+            buttonElement.innerHTML = `Đã thêm ✓`;
+            
+            setTimeout(() => {
+                buttonElement.classList.remove('added');
+                buttonElement.innerHTML = originalText;
+            }, 1500);
         }
 
         function checkLoginStatus() {

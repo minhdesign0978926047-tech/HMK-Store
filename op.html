@@ -67,7 +67,10 @@
         .product-bottom { margin-top: auto; }
         
         .btn-add-cart { width: 100%; background-color: #1c1c1e; color: #ffffff; border: none; padding: 12px 0; border-radius: 12px; font-weight: 600; font-size: 13px; cursor: pointer; transition: background 0.2s; text-align: center; }
-        .btn-add-cart:hover { background: #0066ff; }
+        .btn-add-cart:hover { background-color: #0066ff; }
+
+        /* CSS Nút trạng thái Đã Thêm */
+        .btn-add-cart.added { background-color: #22c55e !important; color: #ffffff !important; }
 
         @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } .hero-slider-container { height: 250px; } }
         @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } .hero-slider-container { height: 180px; } }
@@ -145,7 +148,7 @@
                             <div class="product-price">1.150.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('Silicone With Magsafe', 1150000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT213?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'Silicone With Magsafe', 1150000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT213?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -159,7 +162,7 @@
                             <div class="product-price">1.150.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('With Magsafe Clear', 1150000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT223?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'With Magsafe Clear', 1150000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT223?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -173,7 +176,7 @@
                             <div class="product-price">1.400.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('Silicone Case With Magsafe', 1400000, 'oph.webp')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'Silicone Case With Magsafe', 1400000, 'oph.webp')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -187,7 +190,7 @@
                             <div class="product-price">299.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('Silicone Case Support', 299000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT233?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'Silicone Case Support', 299000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT233?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -201,7 +204,7 @@
                             <div class="product-price">1.150.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('Silicone With Magsafe Yellow', 1150000, 'opv.webp')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'Silicone With Magsafe Yellow', 1150000, 'opv.webp')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -215,7 +218,7 @@
                             <div class="product-price">980.000đ</div>
                         </div>
                         <div class="rating-row"><i class="fa-solid fa-star"></i> <span>4.9</span></div>
-                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart('Air Apple Bumper', 980000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT253?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
+                        <div class="product-bottom"><button class="btn-add-cart" onclick="addToCart(this, 'Air Apple Bumper', 980000, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT253?wid=532&hei=582&fmt=png-alpha')">Thêm vào giỏ hàng</button></div>
                     </div>
                 </div>
 
@@ -291,7 +294,8 @@
             }
         }
 
-        function addToCart(name, price, img) {
+        // Cập nhật hàm addToCart
+        function addToCart(buttonElement, name, price, img) {
             let cart = JSON.parse(localStorage.getItem('hkm_cart')) || [];
             let existingItem = cart.find(item => item.name === name);
             if (existingItem) {
@@ -301,7 +305,16 @@
             }
             localStorage.setItem('hkm_cart', JSON.stringify(cart));
             updateHeaderBadge();
-            alert(`Đã thêm "${name}" vào giỏ hàng thành công!`);
+            
+            // Đổi text và màu sắc nút button trực tiếp
+            const originalText = buttonElement.innerHTML;
+            buttonElement.classList.add('added');
+            buttonElement.innerHTML = `Đã thêm ✓`;
+            
+            setTimeout(() => {
+                buttonElement.classList.remove('added');
+                buttonElement.innerHTML = originalText;
+            }, 1500);
         }
 
         function checkLoginStatus() {
