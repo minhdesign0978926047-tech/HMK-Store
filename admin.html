@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Quản Trị - HKM Store</title>
+    
+    <!-- SCRIPT KIỂM TRA BẢO MẬT (CHẶN NGƯỜI DÙNG BÌNH THƯỜNG) -->
+    <script>
+        const adminUser = JSON.parse(localStorage.getItem('hkm_currentUser'));
+        // Nếu chưa đăng nhập hoặc email không phải là admin thì đá về trang chủ ngay lập tức
+        if (!adminUser || adminUser.email !== 'admin@hkm.com') {
+            alert("Bạn không có quyền truy cập vào trang Quản trị!");
+            window.location.href = "index.html"; 
+        }
+    </script>
+
+    <!-- Nhúng FontAwesome và Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0066ff;
+            --sidebar-bg: #111827;
+            --sidebar-hover: #1f2937;
+            --bg-light: #f3f4f6;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --white: #ffffff;
+            --border: #e5e7eb;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+
+        /* --- SIDEBAR --- */
+        .sidebar { width: 260px; background-color: var(--sidebar-bg); color: var(--white); display: flex; flex-direction: column; transition: all 0.3s ease; }
+        .sidebar-header { padding: 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .logo-box { width: 35px; height: 35px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .sidebar-header h2 { font-size: 18px; font-weight: 800; letter-spacing: 0.5px; }
+        
+        .nav-menu { padding: 20px 0; flex: 1; overflow-y: auto; }
+        .nav-item { padding: 15px 25px; display: flex; align-items: center; gap: 15px; color: #9ca3af; cursor: pointer; transition: 0.2s; font-size: 15px; font-weight: 600; }
+        .nav-item:hover, .nav-item.active { background-color: var(--sidebar-hover); color: var(--white); border-right: 4px solid var(--primary); }
+        .nav-item i { font-size: 18px; width: 20px; text-align: center; }
+
+        /* --- MAIN CONTENT --- */
+        .main-wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        
+        /* Topbar */
+        .topbar { background: var(--white); height: 70px; padding: 0 30px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .topbar-title { font-size: 20px; font-weight: 700; }
+        .admin-profile { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14px; }
+        .admin-avatar { width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .admin-logout { background: transparent; border: none; color: #ef4444; font-weight: 600; cursor: pointer; margin-left: 10px; }
+        .admin-logout:hover { text-decoration: underline; }
+
+        /* Content Area */
+        .content-area { flex: 1; padding: 30px; overflow-y: auto; }
+        .tab-pane { display: none; animation: fadeIn 0.3s ease; }
+        .tab-pane.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- DASHBOARD CARDS --- */
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 30px; }
+        .stat-card { background: var(--white); padding: 25px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; align-items: center; gap: 20px; border: 1px solid var(--border); }
+        .stat-icon { width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .stat-icon.blue { background: #eff6ff; color: #3b82f6; }
+        .stat-icon.green { background: #ecfdf5; color: #10b981; }
+        .stat-icon.orange { background: #fffbeb; color: #f59e0b; }
+        .stat-info h3 { font-size: 14px; color: var(--text-muted); font-weight: 600; margin-bottom: 5px; }
+        .stat-info p { font-size: 24px; font-weight: 800; color: var(--text-main); }
+
+        /* --- TABLES --- */
+        .data-card { background: var(--white); border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); overflow: hidden; margin-bottom: 30px; }
+        .card-header { padding: 20px 25px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: #fafafa; }
+        .card-header h3 { font-size: 16px; font-weight: 700; }
+        
+        .table-responsive { width: 100%; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { padding: 15px 25px; font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; border-bottom: 1px solid var(--border); background: var(--white); }
+        td { padding: 15px 25px; font-size: 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: #f9fafb; }
+
+        /* Trạng thái đơn hàng */
+        .status-badge { padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; display: inline-block; }
+        .status-processing { background: #fef3c7; color: #d97706; }
+        .status-shipping { background: #e0e7ff; color: #2563eb; }
+        .status-completed { background: #d1fae5; color: #059669; }
+        .status-cancelled { background: #fee2e2; color: #dc2626; }
+
+        .status-select { padding: 6px; border-radius: 6px; border: 1px solid var(--border); font-size: 13px; font-weight: 600; outline: none; cursor: pointer; }
+        .status-select:focus { border-color: var(--primary); }
+
+        .btn-action { background: var(--bg-light); border: 1px solid var(--border); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; transition: 0.2s; }
+        .btn-action:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+        /* Responsive */
+        @media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .stats-grid { grid-template-columns: 1fr; } .sidebar { width: 70px; } .sidebar-header h2, .nav-item span { display: none; } .nav-item i { font-size: 22px; margin: 0 auto; } .topbar-title { font-size: 18px; } }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-box">
+                <svg width="16" height="18" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0L23.2583 6.5V19.5L12 26L0.741669 19.5V6.5L12 0Z" fill="white"/>
+                </svg>
+            </div>
+            <h2>HKM ADMIN</h2>
+        </div>
+        <div class="nav-menu">
+            <div class="nav-item active" onclick="switchTab('dashboard', this)">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Tổng quan</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('orders', this)">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Quản lý Đơn hàng</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('users', this)">
+                <i class="fa-solid fa-users"></i>
+                <span>Quản lý Khách hàng</span>
+            </div>
+            <div class="nav-item" onclick="window.location.href='index.html'" style="margin-top: auto;">
+                <i class="fa-solid fa-store"></i>
+                <span>Về trang cửa hàng</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-wrapper">
+        <header class="topbar">
+            <div class="topbar-title" id="topbarTitle">Tổng quan hệ thống</div>
+            <div class="admin-profile">
+                <span>Admin Manager</span>
+                <div class="admin-avatar"><i class="fa-solid fa-user-shield"></i></div>
+                <button class="admin-logout" onclick="adminLogout()">[Đăng xuất]</button>
+            </div>
+        </header>
+
+        <div class="content-area">
+            
+            <!-- TAB 1: DASHBOARD -->
+            <div id="tab-dashboard" class="tab-pane active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="fa-solid fa-wallet"></i></div>
+                        <div class="stat-info">
+                            <h3>TỔNG DOANH THU</h3>
+                            <p id="dashRevenue">0 đ</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="fa-solid fa-box"></i></div>
+                        <div class="stat-info">
+                            <h3>TỔNG ĐƠN HÀNG</h3>
+                            <p id="dashOrders">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange"><i class="fa-solid fa-users"></i></div>
+                        <div class="stat-info">
+                            <h3>KHÁCH HÀNG ĐĂNG KÝ</h3>
+                            <p id="dashUsers">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="card-header">
+                        <h3>Đơn hàng gần đây nhất</h3>
+                        <button class="btn-action" onclick="document.querySelector('.nav-item:nth-child(2)').click()">Xem tất cả</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Khách hàng</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentOrdersTable">
+                                <!-- Render JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: QUẢN LÝ ĐƠN HÀNG -->
+            <div id="tab-orders" class="tab-pane">
+                <div class="data-card">
+                    <div class="card-header">
+                        <h3>Danh sách toàn bộ đơn hàng</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Email khách hàng</th>
+                                    <th>Chi tiết SP</th>
+                                    <th>Phương thức</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Cập nhật trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="allOrdersTable">
+                                <!-- Render JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: QUẢN LÝ KHÁCH HÀNG -->
+            <div id="tab-users" class="tab-pane">
+                <div class="data-card">
+                    <div class="card-header">
+                        <h3>Danh sách tài khoản khách hàng</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Họ và tên</th>
+                                    <th>Email đăng nhập</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Địa chỉ mặc định</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTable">
+                                <!-- Render JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- SCRIPT XỬ LÝ DỮ LIỆU TỪ LOCALSTORAGE -->
+    <script>
+        // Hàm xử lý đăng xuất dành cho Admin
+        function adminLogout() {
+            localStorage.removeItem('hkm_currentUser');
+            alert('Đã đăng xuất khỏi tài khoản Quản trị viên!');
+            window.location.href = 'index.html';
+        }
+
+        // Lấy dữ liệu thực tế từ LocalStorage mà hệ thống cửa hàng đang dùng
+        let dbOrders = JSON.parse(localStorage.getItem('hkm_orders')) || [];
+        let dbUsers = JSON.parse(localStorage.getItem('hkm_users')) || [];
+
+        function formatMoney(num) {
+            return num.toLocaleString('vi-VN') + ' đ';
+        }
+
+        // --- HÀM CHUYỂN TAB ---
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+            
+            element.classList.add('active');
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+
+            const titles = {
+                'dashboard': 'Tổng quan hệ thống',
+                'orders': 'Quản lý Đơn hàng',
+                'users': 'Quản lý Khách hàng'
+            };
+            document.getElementById('topbarTitle').textContent = titles[tabId];
+
+            if(tabId === 'orders') renderAllOrders();
+            if(tabId === 'users') renderUsers();
+        }
+
+        // --- RENDER DASHBOARD ---
+        function loadDashboardStats() {
+            // Tổng doanh thu (Chỉ tính các đơn chưa bị hủy)
+            const totalRev = dbOrders.reduce((sum, order) => {
+                if(order.status !== 'Đã hủy') return sum + order.totalAmount;
+                return sum;
+            }, 0);
+            
+            document.getElementById('dashRevenue').textContent = formatMoney(totalRev);
+            document.getElementById('dashOrders').textContent = dbOrders.length;
+            document.getElementById('dashUsers').textContent = dbUsers.length;
+
+            // Render 5 đơn hàng gần nhất
+            const recentTable = document.getElementById('recentOrdersTable');
+            const recentOrders = [...dbOrders].reverse().slice(0, 5); // Đảo ngược để lấy đơn mới nhất
+
+            if (recentOrders.length === 0) {
+                recentTable.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 30px;">Chưa có đơn hàng nào trong hệ thống.</td></tr>`;
+                return;
+            }
+
+            recentTable.innerHTML = recentOrders.map(order => {
+                return `
+                    <tr>
+                        <td style="font-weight: 700; color: #0066ff;">#${order.orderId}</td>
+                        <td>${order.orderDate}</td>
+                        <td>${order.userEmail}</td>
+                        <td style="font-weight: 700;">${formatMoney(order.totalAmount)}</td>
+                        <td>${getStatusBadge(order.status)}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // --- RENDER TOÀN BỘ ĐƠN HÀNG ---
+        function renderAllOrders() {
+            const table = document.getElementById('allOrdersTable');
+            const reversedOrders = [...dbOrders].reverse();
+
+            if (reversedOrders.length === 0) {
+                table.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 30px;">Chưa có đơn hàng nào.</td></tr>`;
+                return;
+            }
+
+            table.innerHTML = reversedOrders.map((order, index) => {
+                // Liệt kê chi tiết SP
+                let itemsList = order.items.map(item => `<div>- ${item.name} (x${item.quantity})</div>`).join('');
+                let pMethod = order.paymentMethod || 'COD';
+
+                // Lấy index gốc để cập nhật đúng mảng
+                let originalIndex = dbOrders.length - 1 - index;
+
+                return `
+                    <tr>
+                        <td style="font-weight: 700; color: #0066ff;">#${order.orderId}</td>
+                        <td>${order.orderDate}</td>
+                        <td>${order.userEmail}</td>
+                        <td style="font-size: 13px; color: #555;">${itemsList}</td>
+                        <td><span style="background:#f3f4f6; padding:4px 8px; border-radius:6px; font-size:12px; font-weight:600;">${pMethod}</span></td>
+                        <td style="font-weight: 700; color: #ef4444;">${formatMoney(order.totalAmount)}</td>
+                        <td>
+                            <select class="status-select" onchange="updateOrderStatus(${originalIndex}, this.value)">
+                                <option value="Đang xử lý" ${order.status === 'Đang xử lý' || !order.status ? 'selected' : ''}>Đang xử lý</option>
+                                <option value="Đang giao hàng" ${order.status === 'Đang giao hàng' ? 'selected' : ''}>Đang giao</option>
+                                <option value="Đã hoàn thành" ${order.status === 'Đã hoàn thành' ? 'selected' : ''}>Hoàn thành</option>
+                                <option value="Đã hủy" ${order.status === 'Đã hủy' ? 'selected' : ''}>Đã hủy</option>
+                            </select>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Cập nhật trạng thái đơn hàng và lưu lại LocalStorage
+        function updateOrderStatus(index, newStatus) {
+            dbOrders[index].status = newStatus;
+            localStorage.setItem('hkm_orders', JSON.stringify(dbOrders));
+            
+            // Cập nhật lại số liệu Dashboard nếu cần
+            loadDashboardStats();
+            
+            // Hiển thị thông báo nhỏ
+            alert(`Đã cập nhật đơn #${dbOrders[index].orderId} thành: ${newStatus}`);
+        }
+
+        // Tạo badge màu cho status ở Dashboard
+        function getStatusBadge(status) {
+            let className = '';
+            let text = status || 'Đang xử lý';
+            
+            if (text === 'Đang xử lý') className = 'status-processing';
+            else if (text === 'Đang giao hàng' || text === 'Đang giao') className = 'status-shipping';
+            else if (text === 'Đã hoàn thành' || text === 'Hoàn thành') className = 'status-completed';
+            else if (text === 'Đã hủy') className = 'status-cancelled';
+            else className = 'status-processing'; // Mặc định
+
+            return `<span class="status-badge ${className}">${text}</span>`;
+        }
+
+        // --- RENDER DANH SÁCH KHÁCH HÀNG ---
+        function renderUsers() {
+            const table = document.getElementById('usersTable');
+            
+            if (dbUsers.length === 0) {
+                table.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 30px;">Chưa có tài khoản khách hàng nào đăng ký.</td></tr>`;
+                return;
+            }
+
+            table.innerHTML = dbUsers.map(user => {
+                return `
+                    <tr>
+                        <td style="font-weight: 700;">${user.name || 'Chưa cập nhật'}</td>
+                        <td style="color: #0066ff;">${user.email}</td>
+                        <td>${user.phone || '<span style="color:#aaa; font-style:italic;">Chưa cập nhật</span>'}</td>
+                        <td>${user.address || '<span style="color:#aaa; font-style:italic;">Chưa cập nhật</span>'}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // --- KHỞI CHẠY KHI TẢI TRANG ---
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDashboardStats();
+        });
+    </script>
+</body>
+</html>

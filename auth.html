@@ -446,6 +446,21 @@
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
 
+            // KIỂM TRA NẾU LÀ TÀI KHOẢN ADMIN VỚI MẬT KHẨU MỚI: 123456
+            if (email === 'admin@hkm.com' && password === '123456') {
+                
+                // Lưu thông tin phiên đăng nhập cho admin để không bị từ chối quyền truy cập ở admin.html
+                const adminUser = { name: "HKM Admin", email: "admin@hkm.com", role: "admin" };
+                localStorage.setItem('hkm_currentUser', JSON.stringify(adminUser));
+
+                showToast('Đăng nhập Quản trị viên thành công!');
+                setTimeout(() => {
+                    window.location.href = 'admin.html'; // Chuyển thẳng tới trang admin
+                }, 1000);
+                return; // Dừng hàm, không thực thi các lệnh phía dưới nữa
+            }
+
+            // NẾU LÀ TÀI KHOẢN NGƯỜI DÙNG BÌNH THƯỜNG
             let users = JSON.parse(localStorage.getItem('hkm_users')) || [];
             const currentUser = users.find(u => u.email === email && u.password === password);
 
@@ -454,7 +469,7 @@
                 showToast('Đăng nhập thành công!');
                 
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = 'index.html'; // Chuyển về trang chủ
                 }, 1000);
             } else {
                 showToast('Email hoặc mật khẩu không chính xác!', false);
